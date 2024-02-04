@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/04 23:38:10 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/04 23:55:23 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@ int32_t main(void)
 	// }
 	// cleanup(&game);
 	mlx_t *mlx = mlx_init(500, 500, "so_long", true);
-	mlx_texture_t *texture = mlx_load_png("./thief.png");
+	mlx_texture_t *texture = mlx_load_png("./assets/textures/collectible.png");
 	if (mlx_errno)
 	{
 		perror(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
 	mlx_image_t *image = mlx_texture_to_image(mlx, texture);
+	mlx_resize_image(image, 32, 32);
 	mlx_image_to_window(mlx, image, 0, 0);
 
 	mlx_loop(mlx);
