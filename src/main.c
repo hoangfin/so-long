@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/04 23:55:23 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/05 23:05:06 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 int32_t main(void)
 {
-	// t_map	*map;
-	// t_game	game;
+	t_map	*map;
+	t_game	game;
 
 	// if (argc != 2)
 	// {
@@ -25,26 +25,26 @@ int32_t main(void)
 	// 	return (EXIT_FAILURE);
 	// }
 	// map = parse(argv[1]);
-	// init_game(&game, map);
-	// if (errno)
-	// {
-	// 	perror(get_error_msg(errno));
-	// 	cleanup(&game);
-	// 	return (EXIT_FAILURE);
-	// }
-	// cleanup(&game);
-	mlx_t *mlx = mlx_init(500, 500, "so_long", true);
-	mlx_texture_t *texture = mlx_load_png("./assets/textures/collectible.png");
-	if (mlx_errno)
+	init_game(&game, map);
+	if (errno)
 	{
-		perror(mlx_strerror(mlx_errno));
+		perror(get_error_msg(errno));
+		cleanup(&game);
 		return (EXIT_FAILURE);
 	}
-	mlx_image_t *image = mlx_texture_to_image(mlx, texture);
-	mlx_resize_image(image, 32, 32);
-	mlx_image_to_window(mlx, image, 0, 0);
+	cleanup(&game);
+	// mlx_t *mlx = mlx_init(500, 500, "so_long", true);
+	// mlx_texture_t *texture = mlx_load_png("./assets/textures/collectible.png");
+	// if (mlx_errno)
+	// {
+	// 	perror(mlx_strerror(mlx_errno));
+	// 	return (EXIT_FAILURE);
+	// }
+	// mlx_image_t *image = mlx_texture_to_image(mlx, texture);
+	// mlx_resize_image(image, 32, 32);
+	// mlx_image_to_window(mlx, image, 0, 0);
 
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+	// mlx_loop(mlx);
+	// mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
 }

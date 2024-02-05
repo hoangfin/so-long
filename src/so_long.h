@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/04 20:50:51 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/05 23:19:14 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void		cleanup(t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		close_hook(void *param);
 void		draw_floor(t_game *game);
+void		move(int32_t x, int32_t y, t_game *game);
 const char	*get_error_msg(int errno);
 
 #endif
