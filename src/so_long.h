@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/06 11:33:39 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/06 21:07:39 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,11 @@
 # include <math.h>
 # include <MLX42/MLX42.h>
 
-typedef struct s_map
-{
-	uint32_t	width;
-	uint32_t	height;
-}	t_map;
-
 typedef struct s_game
 {
 	mlx_t		*mlx;
-	t_map		*map;
+	uint32_t	map_width;
+	uint32_t	map_height;
 	mlx_image_t *space;
 	mlx_image_t *wall;
 	mlx_image_t *collectible;
@@ -41,7 +36,7 @@ typedef struct s_game
 	int32_t		move_count;
 }	t_game;
 
-void		init_game(t_game *game, t_map *map);
+void		init_game(t_game *game);
 void		cleanup(t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		close_hook(void *param);

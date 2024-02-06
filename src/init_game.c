@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/04 20:49:33 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/06 21:09:37 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,21 @@ static void	init_image(t_game *game)
 		mlx_strerror(mlx_errno);
 		return ;
 	}
-	game->image.space = mlx_texture_to_image(game->mlx, textures[0]);
-	game->image.wall = mlx_texture_to_image(game->mlx, textures[1]);
-	game->image.player = mlx_texture_to_image(game->mlx, textures[2]);
-	game->image.collectible = mlx_texture_to_image(game->mlx, textures[3]);
-	game->image.exit = mlx_texture_to_image(game->mlx, textures[4]);
+	game->space = mlx_texture_to_image(game->mlx, textures[0]);
+	game->wall = mlx_texture_to_image(game->mlx, textures[1]);
+	game->player = mlx_texture_to_image(game->mlx, textures[2]);
+	game->collectible = mlx_texture_to_image(game->mlx, textures[3]);
+	game->exit = mlx_texture_to_image(game->mlx, textures[4]);
 	i = 0;
 	while (i < 5)
 		mlx_delete_texture(textures[i++]);
 }
 
-void	init_game(t_game *game, t_map *map)
+void	init_game(t_game *game)
 {
-	game->mlx = mlx_init(map->width, map->height, "so_long", true);
+	game->map_width = 13 * 32;
+	game->map_height = 5 * 32;
+	game->mlx = mlx_init(game->map_width, game->map_height, "so_long", true);
 	if (game->mlx == NULL)
 	{
 		errno = mlx_errno;
@@ -52,7 +54,7 @@ void	init_game(t_game *game, t_map *map)
 	game->move_count = 0;
 	mlx_key_hook(game->mlx, key_hook, game);
 	mlx_close_hook(game->mlx, close_hook, game);
-	
+
 	draw_floor(game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
