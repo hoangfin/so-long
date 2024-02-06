@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/05 23:19:14 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/06 11:33:39 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,15 @@ typedef struct s_map
 	uint32_t	height;
 }	t_map;
 
-typedef struct s_image
+typedef struct s_game
 {
+	mlx_t		*mlx;
+	t_map		*map;
 	mlx_image_t *space;
 	mlx_image_t *wall;
 	mlx_image_t *collectible;
 	mlx_image_t *exit;
 	mlx_image_t *player;
-}	t_image;
-
-typedef struct s_game
-{
-	mlx_t		*mlx;
-	t_image		image;
 	int32_t		collectible_count;
 	int32_t		move_count;
 }	t_game;
