@@ -13,9 +13,10 @@ CFLAGS := -g -Wall -Wextra -Werror -I$(LIBFT_DIR) -I$(MLX42_DIR)/include
 
 SOURCES := $(SOURCE_DIR)/main.c \
 			$(SOURCE_DIR)/init_game.c \
-			$(SOURCE_DIR)/draw_floor.c \
+			$(SOURCE_DIR)/draw_map.c \
 			$(SOURCE_DIR)/close_hook.c \
 			$(SOURCE_DIR)/key_hook.c \
+			$(SOURCE_DIR)/move.c \
 			$(SOURCE_DIR)/cleanup.c
 
 OBJECTS := $(SOURCES:.c=.o)

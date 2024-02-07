@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/06 21:07:30 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/08 00:10:48 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int32_t main(void)
 	// }
 	// map = parse(argv[1]);
 	init_game(&game);
-	if (errno)
-	{
-		perror(get_error_msg(errno));
-		cleanup(&game);
-		return (EXIT_FAILURE);
-	}
+	// if (errno)
+	// {
+	// 	perror(get_error_msg(errno));
+	// 	cleanup(&game);
+	// 	return (EXIT_FAILURE);
+	// }
 	cleanup(&game);
 	// mlx_t *mlx = mlx_init(500, 500, "so_long", true);
 	// mlx_texture_t *texture = mlx_load_png("./assets/textures/collectible.png");
