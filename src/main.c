@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/05 23:05:06 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/08 00:10:48 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 int32_t main(void)
 {
-	t_map	*map;
 	t_game	game;
 
 	// if (argc != 2)
@@ -25,13 +24,13 @@ int32_t main(void)
 	// 	return (EXIT_FAILURE);
 	// }
 	// map = parse(argv[1]);
-	init_game(&game, map);
-	if (errno)
-	{
-		perror(get_error_msg(errno));
-		cleanup(&game);
-		return (EXIT_FAILURE);
-	}
+	init_game(&game);
+	// if (errno)
+	// {
+	// 	perror(get_error_msg(errno));
+	// 	cleanup(&game);
+	// 	return (EXIT_FAILURE);
+	// }
 	cleanup(&game);
 	// mlx_t *mlx = mlx_init(500, 500, "so_long", true);
 	// mlx_texture_t *texture = mlx_load_png("./assets/textures/collectible.png");
