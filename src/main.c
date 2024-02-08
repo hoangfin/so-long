@@ -3,26 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/08 00:10:48 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:46:36 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// const char	*error_message = NULL;
-
-int32_t main(void)
+int32_t	main(int argc, char **argv)
 {
 	t_game	game;
 
-	// if (argc != 2)
-	// {
-	// 	perror("Error: Map file .ber is missing\n");
-	// 	return (EXIT_FAILURE);
-	// }
+	if (argc != 2)
+	{
+		perror("Error: Map file .ber is missing\n");
+		return (EXIT_FAILURE);
+	}
 	// map = parse(argv[1]);
 	init_game(&game);
 	// if (errno)
@@ -31,7 +29,7 @@ int32_t main(void)
 	// 	cleanup(&game);
 	// 	return (EXIT_FAILURE);
 	// }
-	cleanup(&game);
+
 	// mlx_t *mlx = mlx_init(500, 500, "so_long", true);
 	// mlx_texture_t *texture = mlx_load_png("./assets/textures/collectible.png");
 	// if (mlx_errno)
