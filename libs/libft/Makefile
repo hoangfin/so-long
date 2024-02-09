@@ -5,6 +5,7 @@ COMMON_DIR := ./common
 ARRAY_DIR := ./array
 LIST_DIR := ./linkedlist
 STRING_DIR := ./string
+GNL_DIR := ./gnl
 
 # Compiler & flags
 CC := cc
@@ -72,7 +73,8 @@ SOURCES := $(COMMON_DIR)/ft_atoi.c \
 		$(LIST_DIR)/ft_list_every.c \
 		$(LIST_DIR)/ft_list_some.c \
 		$(LIST_DIR)/ft_list_map.c \
-		$(LIST_DIR)/ft_list_clear.c
+		$(LIST_DIR)/ft_list_clear.c \
+		$(GNL_DIR)/get_next_line.c
 
 # Object files
 OBJECTS := $(SOURCES:.c=.o)
