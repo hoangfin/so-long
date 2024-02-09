@@ -3,19 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/09 16:54:02 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/09 23:06:30 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+static void	print_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i] != NULL)
+		printf("%s\n", map[i++]);
+}
+
+static void	delete_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i] != NULL)
+		free(map[i++]);
+	free(map);
+}
+
 int32_t	main(int argc, char **argv)
 {
 	char	**map;
-	t_game	game;
+	// t_game	game;
 
 	if (argc != 2)
 	{
@@ -25,10 +44,12 @@ int32_t	main(int argc, char **argv)
 	map = parse_map(argv[1]);
 	if (map == NULL)
 	{
-		perror(ft_strerror(errno));
+		perror(strerror(errno));
 		return (EXIT_FAILURE);
 	}
-	init_game(&game);
+	print_map(map);
+	delete_map(map);
+	// init_game(&game);
 
 	return (EXIT_SUCCESS);
 }
