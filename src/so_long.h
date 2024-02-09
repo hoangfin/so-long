@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/08 16:16:48 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/08 20:49:34 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ typedef struct s_game
 	int32_t		move_count;
 }	t_game;
 
-void		init_game(t_game *game);
-void		cleanup(t_game *game);
-void		key_hook(mlx_key_data_t keydata, void *param);
-void		close_hook(void *param);
-void		draw_map(t_game *game);
-void		move(int32_t x, int32_t y, t_game *game);
-const char	*get_error_msg(int errno);
+char	**parse_map(const char *path);
+void	init_game(t_game *game);
+void	cleanup(t_game *game);
+void	key_hook(mlx_key_data_t keydata, void *param);
+void	close_hook(void *param);
+void	draw_map(t_game *game);
+void	move(int32_t x, int32_t y, t_game *game);
 
 #endif
