@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:10:59 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/08 14:50:10 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/09 22:40:48 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,34 +56,6 @@ static ssize_t	flush(char *buffer, char **cache)
 	return (ft_strlen(buffer));
 }
 
-static ssize_t	update_cache_optimized(int fd, char **cache)
-{
-	char	buffer[256];
-	ssize_t	i;
-	ssize_t	bytes_read;
-
-	i = 0;
-	bytes_read = read(fd, buffer + i, BUFFER_SIZE);
-	while (bytes_read > 0)
-	{
-		buffer[bytes_read + i] = '\0';
-		if (ft_strchr(buffer + i, '\n') != NULL)
-			return (flush(buffer, cache));
-		i += bytes_read;
-		if (i >= 255 - BUFFER_SIZE)
-		{
-			if (flush(buffer, cache) < 0)
-				return (-1);
-			i = 0;
-		}
-		bytes_read = read(fd, buffer + i, BUFFER_SIZE);
-	}
-	if (bytes_read == 0 && i > 0)
-		if (flush(buffer, cache) < 0)
-			return (-1);
-	return (bytes_read);
-}
-
 static ssize_t	update_cache(int fd, char **cache)
 {
 	char	*buffer;
@@ -126,10 +98,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 2047)
 		return (NULL);
-	if (BUFFER_SIZE < 256)
-		status = update_cache_optimized(fd, &caches[fd]);
-	else
-		status = update_cache(fd, &caches[fd]);
+	status = update_cache(fd, &caches[fd]);
 	if (status < 0 || shift_line(&caches[fd], &line) == -1)
 	{
 		free(caches[fd]);
