@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/09 10:58:44 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/09 16:54:02 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int32_t	main(int argc, char **argv)
 	map = parse_map(argv[1]);
 	if (map == NULL)
 	{
-		perror(error_message);
+		perror(ft_strerror(errno));
 		return (EXIT_FAILURE);
 	}
 	init_game(&game);

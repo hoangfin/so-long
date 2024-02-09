@@ -3,29 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/09 10:55:09 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/09 18:31:00 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static size_t	get_line_count(const char *path)
+static int	count_line(const char *path)
 {
 	int		fd;
+	int		line_count;
 	char	*line;
-	size_t	line_count;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-	{
-		perror(strerror(errno));
-		exit(EXIT_FAILURE);
-	}
-	line = get_next_line(fd);
+		return (-1);
 	line_count = 0;
+	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		line_count++;
@@ -33,27 +30,33 @@ static size_t	get_line_count(const char *path)
 		line = get_next_line(fd);
 	}
 	close(fd);
+	if (errno)
+		return (-1);
 	return (line_count);
 }
 
-static bool	init_map(char **map, const char *path)
+static int	init_map(char **map, const char *path)
 {
 	int		fd;
 	char	*line;
+	int		i;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-	{
-		perror(strerror(errno));
-		exit(EXIT_FAILURE);
-	}
+		return (-1);
 	line = get_next_line(fd);
+	i = 0;
 	while (line != NULL)
 	{
+		map[i++] = ft_strdup_chr(line, '\n');
 		free(line);
 		line = get_next_line(fd);
 	}
+	map[i] = NULL;
 	close(fd);
+	if (errno)
+		return (-1);
+	return (0);
 }
 
 static void	delete_map(char **map)
@@ -69,16 +72,18 @@ static void	delete_map(char **map)
 char	**parse_map(const char *path)
 {
 	char	**map;
+	int		line_count;
 
-	map = (char **)ft_calloc(get_line_count(path) + 1, sizeof(char *));
+	line_count = count_line(path);
+	if (line_count < 0)
+		return (NULL);
+	map = (char **)ft_calloc(line_count + 1, sizeof(char *));
 	if (map == NULL)
+		return (NULL);
+	if (init_map(map, path) < 0)
 	{
-		perror(strerror(errno));
-		exit(EXIT_FAILURE);
-	}
-	if (init_map(map, path) == false)
-	{
-
+		delete_map(map);
+		return (NULL);
 	}
 	return (map);
 }
