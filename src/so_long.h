@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/08 20:49:34 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/09 21:21:26 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <string.h>
 # include <math.h>
 # include <fcntl.h>
-# include "MLX42.h"
+# include "MLX42/MLX42.h"
 
 typedef struct s_game
 {
