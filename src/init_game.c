@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/08 15:53:30 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/10 14:51:46 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,10 @@ static void	init_image(t_game *game)
 		mlx_delete_texture(textures[i++]);
 }
 
-void	init_game(t_game *game)
+void	init_game(t_game *game, t_map *map)
 {
-	game->map_width = 13 * 32;
-	game->map_height = 5 * 32;
-	game->mlx = mlx_init(game->map_width, game->map_height, "so_long", true);
+	game->map = map;
+	game->mlx = mlx_init(map->width, map->height, "so_long", true);
 	if (game->mlx == NULL)
 	{
 		perror(mlx_strerror(mlx_errno));
