@@ -3,52 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/09 23:06:30 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:50:54 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	print_map(char **map)
+static void	print_map(t_map *map)
 {
 	int	i;
 
 	i = 0;
-	while (map[i] != NULL)
-		printf("%s\n", map[i++]);
+	while (map->matrix[i] != NULL)
+		printf("%s\n", map->matrix[i++]);
+	printf("row: %d\n", map->row);
+	printf("col: %d\n", map->col);
+	printf("width: %d\n", map->width);
+	printf("height: %d\n", map->height);
 }
 
-static void	delete_map(char **map)
-{
-	int	i;
+// static void	delete_map(char **map)
+// {
+// 	int	i;
 
-	i = 0;
-	while (map[i] != NULL)
-		free(map[i++]);
-	free(map);
-}
+// 	i = 0;
+// 	while (map[i] != NULL)
+// 		free(map[i++]);
+// 	free(map);
+// }
 
 int32_t	main(int argc, char **argv)
 {
-	char	**map;
+	t_map	map;
 	// t_game	game;
 
 	if (argc != 2)
 	{
-		perror("Error: Map file .ber is missing\n");
+		perror(strerror(errno));
 		return (EXIT_FAILURE);
 	}
-	map = parse_map(argv[1]);
-	if (map == NULL)
+	if (init_map(&map, argv[1]) < 0)
 	{
 		perror(strerror(errno));
 		return (EXIT_FAILURE);
 	}
-	print_map(map);
-	delete_map(map);
+	print_map(&map);
+	// delete_map(map);
 	// init_game(&game);
 
 	return (EXIT_SUCCESS);
