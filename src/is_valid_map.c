@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:22:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/10 17:52:58 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/10 23:22:21 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool	is_surrounded_by_walls(t_map *map)
+static bool	is_enclosed(t_map *map)
 {
 	int32_t	i;
 
@@ -33,9 +33,41 @@ static bool	is_surrounded_by_walls(t_map *map)
 	return (true);
 }
 
+static bool	has_valid_elements(t_map *map, int p, int c, int e)
+{
+	int	row;
+	int	col;
+
+	row = 1;
+	while (row < map->row - 1)
+	{
+		col = 1;
+		while (col < map->col - 1)
+		{
+			if (map->matrix[row][col] == 'P')
+				p++;
+			if (map->matrix[row][col] == 'C')
+				c++;
+			if (map->matrix[row][col] == 'E')
+				e++;
+			col++;
+		}
+		row++;
+	}
+	if (p != 1)
+		return (false);
+	if (e != 1)
+		return (false);
+	if (c < 1)
+		return (false);
+	return (true);
+}
+
 bool	is_valid_map(t_map *map)
 {
-	if (!is_surrounded_by_walls(map))
+	if (is_enclosed(map) == false)
+		return (false);
+	if (has_valid_elements(map, 0, 0, 0) == false)
 		return (false);
 	return (true);
 }

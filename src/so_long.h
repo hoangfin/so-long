@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/10 17:50:27 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/10 23:51:06 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_game
 	int32_t		move_count;
 }	t_game;
 
-int		init_map(t_map *map, const char *path);
+int		read_map(t_map *map, const char *path);
 bool	is_valid_map(t_map *map);
 void	init_game(t_game *game, t_map *map);
 void	cleanup(t_game *game);

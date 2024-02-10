@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/10 17:52:39 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/10 23:50:57 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ int32_t	main(int argc, char **argv)
 		perror(strerror(errno));
 		return (EXIT_FAILURE);
 	}
-	if (init_map(&map, argv[1]) < 0)
+	if (read_map(&map, argv[1]) < 0)
 	{
 		perror(strerror(errno));
 		return (EXIT_FAILURE);
 	}
 	print_map(&map);
 	if (!is_valid_map(&map))
-		printf("INVALID MAP");
+		printf("INVALID MAP\n");
 	delete_matrix(map.matrix);
 	// init_game(&game);
 
