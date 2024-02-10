@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/09 21:21:26 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:49:46 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,19 @@
 # include <fcntl.h>
 # include "MLX42/MLX42.h"
 
+typedef struct s_map
+{
+	char	**matrix;
+	int32_t	row;
+	int32_t	col;
+	int32_t	width;
+	int32_t	height;
+}	t_map;
+
 typedef struct s_game
 {
 	mlx_t		*mlx;
-	uint32_t	map_width;
-	uint32_t	map_height;
+	t_map		*map;
 	mlx_image_t	*space;
 	mlx_image_t	*wall;
 	mlx_image_t	*collectible;
@@ -37,8 +45,8 @@ typedef struct s_game
 	int32_t		move_count;
 }	t_game;
 
-char	**parse_map(const char *path);
-void	init_game(t_game *game);
+int		init_map(t_map *map, const char *path);
+void	init_game(t_game *game, t_map *map);
 void	cleanup(t_game *game);
 void	key_hook(mlx_key_data_t keydata, void *param);
 void	close_hook(void *param);
