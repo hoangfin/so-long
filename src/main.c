@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/10 16:50:54 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/10 17:52:39 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,14 @@ static void	print_map(t_map *map)
 	printf("height: %d\n", map->height);
 }
 
-// static void	delete_map(char **map)
-// {
-// 	int	i;
+static void	delete_matrix(char **matrix)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (map[i] != NULL)
-// 		free(map[i++]);
-// 	free(map);
-// }
+	i = 0;
+	while (matrix[i] != NULL)
+		free(matrix[i++]);
+}
 
 int32_t	main(int argc, char **argv)
 {
@@ -51,7 +50,9 @@ int32_t	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	print_map(&map);
-	// delete_map(map);
+	if (!is_valid_map(&map))
+		printf("INVALID MAP");
+	delete_matrix(map.matrix);
 	// init_game(&game);
 
 	return (EXIT_SUCCESS);

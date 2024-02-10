@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/10 16:49:46 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/10 17:50:27 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_game
 }	t_game;
 
 int		init_map(t_map *map, const char *path);
+bool	is_valid_map(t_map *map);
 void	init_game(t_game *game, t_map *map);
 void	cleanup(t_game *game);
 void	key_hook(mlx_key_data_t keydata, void *param);

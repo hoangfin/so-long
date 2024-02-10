@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:22:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/10 15:31:02 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/10 17:52:58 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ static bool	is_surrounded_by_walls(t_map *map)
 	return (true);
 }
 
-bool	is_valid_map(char **map)
+bool	is_valid_map(t_map *map)
 {
-
+	if (!is_surrounded_by_walls(map))
+		return (false);
+	return (true);
 }
