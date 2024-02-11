@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/10 23:51:26 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/11 14:58:39 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ static int	fill_map(t_map *map, const char *path)
 	close(fd);
 	if (errno)
 		return (-1);
-	map->row = i;
-	map->col = ft_strlen(map->matrix[0]);
-	map->width = map->col * 32;
-	map->height = map->row * 32;
+	map->rows = i;
+	map->cols = ft_strlen(map->matrix[0]);
+	map->width = map->cols * 32;
+	map->height = map->rows * 32;
 	return (0);
 }
 

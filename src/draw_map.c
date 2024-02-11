@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 20:50:09 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/11 15:22:39 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/11 16:32:01 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ void	draw_map(t_game *game)
 	{
 		col = 0;
 		while (col < game->map->cols)
-			draw(game, row, col, game->map->matrix[row][col++]);
+		{
+			draw(game, row, col, game->map->matrix[row][col]);
+			col++;
+		}
 		row++;
 	}
 }

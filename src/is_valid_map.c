@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:22:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/10 23:22:21 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/11 16:01:05 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ static bool	is_enclosed(t_map *map)
 	int32_t	i;
 
 	i = 0;
-	while (i < map->row)
+	while (i < map->rows)
 	{
-		if (map->matrix[i][0] != '1' || map->matrix[i][map->col - 1] != '1')
+		if (map->matrix[i][0] != '1' || map->matrix[i][map->cols - 1] != '1')
 			return (false);
 		i++;
 	}
 	i = 0;
-	while (i < map->col)
+	while (i < map->cols)
 	{
-		if (map->matrix[0][i] != '1' || map->matrix[map->row - 1][i] != '1')
+		if (map->matrix[0][i] != '1' || map->matrix[map->rows - 1][i] != '1')
 			return (false);
 		i++;
 	}
@@ -39,10 +39,10 @@ static bool	has_valid_elements(t_map *map, int p, int c, int e)
 	int	col;
 
 	row = 1;
-	while (row < map->row - 1)
+	while (row < map->rows - 1)
 	{
 		col = 1;
-		while (col < map->col - 1)
+		while (col < map->cols - 1)
 		{
 			if (map->matrix[row][col] == 'P')
 				p++;

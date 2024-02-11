@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_hook.c                                       :+:      :+:    :+:   */
+/*   resize_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 19:52:19 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/11 17:50:51 by hoatran          ###   ########.fr       */
+/*   Created: 2024/02/11 17:45:24 by hoatran           #+#    #+#             */
+/*   Updated: 2024/02/11 21:18:40 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 /**
- * Callback function used to handle window closing which is called when the
- * user attempts to close the window, for example by clicking the close widget
- * in the title bar.
+ * Callback function used to handle window resizing.
  *
+ * @param[in] width The new width of the window.
+ * @param[in] height The new height of the window.
  * @param[in] param Additional parameter to pass to the function.
  */
-void	close_hook(void *param)
+void	resize_hook(int32_t width, int32_t height, void *param)
 {
 	t_game	*game;
 
 	game = (t_game *)param;
-	ft_putendl_fd("You've clicked close icon at title bar", 1);
-	mlx_close_window(game->mlx);
+	game->map->width = width;
+	game->map->height = height;
+	printf("map_width = %d, map_height = %d\n", game->map->width, game->map->height);
 }

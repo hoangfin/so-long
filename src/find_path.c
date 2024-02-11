@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_hook.c                                       :+:      :+:    :+:   */
+/*   find_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 19:52:19 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/11 17:50:51 by hoatran          ###   ########.fr       */
+/*   Created: 2024/02/11 13:14:13 by hoatran           #+#    #+#             */
+/*   Updated: 2024/02/11 16:31:19 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/**
- * Callback function used to handle window closing which is called when the
- * user attempts to close the window, for example by clicking the close widget
- * in the title bar.
- *
- * @param[in] param Additional parameter to pass to the function.
- */
-void	close_hook(void *param)
-{
-	t_game	*game;
 
-	game = (t_game *)param;
-	ft_putendl_fd("You've clicked close icon at title bar", 1);
-	mlx_close_window(game->mlx);
-}
+// t_list	*find_path(t_map *map)
+// {
+// 	t_list	*queue;
+// 	t_list	*path;
+// 	t_node	*node;
+
+// 	queue = ft_list(0);
+// 	path = ft_list(0);
+// 	ft_list_push(queue, ft_list_node());
+
+// 	while (queue->length > 0)
+// 	{
+// 		node = ft_list_shift(queue);
+// 		if (node->data == target)
+// 			return (path);
+// 		while (/* condition */)
+// 		{
+// 			/* code */
+// 		}
+
+// 	}
+// }

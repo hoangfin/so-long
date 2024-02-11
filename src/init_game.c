@@ -3,39 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/10 14:51:46 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/11 17:47:24 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	init_image(t_game *game)
+static mlx_image_t	*load_png(mlx_t *mlx, const char *path)
 {
-	mlx_texture_t	*textures[5];
-	int				i;
+	mlx_texture_t	*texture;
+	mlx_image_t		*image;
 
-	textures[0] = mlx_load_png("assets/textures/space.png");
-	textures[1] = mlx_load_png("assets/textures/wall.png");
-	textures[2] = mlx_load_png("assets/textures/player.png");
-	textures[3] = mlx_load_png("assets/textures/collectible.png");
-	textures[4] = mlx_load_png("assets/textures/exit.png");
-	if (mlx_errno)
-	{
-		perror(mlx_strerror(mlx_errno));
-		cleanup(game);
-		exit(EXIT_FAILURE);
-	}
-	game->space = mlx_texture_to_image(game->mlx, textures[0]);
-	game->wall = mlx_texture_to_image(game->mlx, textures[1]);
-	game->player = mlx_texture_to_image(game->mlx, textures[2]);
-	game->collectible = mlx_texture_to_image(game->mlx, textures[3]);
-	game->exit = mlx_texture_to_image(game->mlx, textures[4]);
-	i = 0;
-	while (i < 5)
-		mlx_delete_texture(textures[i++]);
+	texture = mlx_load_png(path);
+	if (texture == NULL)
+		return (NULL);
+	image = mlx_texture_to_image(mlx, texture);
+	mlx_delete_texture(texture);
+	return (image);
+}
+
+static void	init_images(t_game *game)
+{
+	game->space = load_png(game->mlx, "assets/textures/space.png");
+	game->wall = load_png(game->mlx, "assets/textures/wall.png");
+	game->player = load_png(game->mlx, "assets/textures/player.png");
+	game->collectible = load_png(game->mlx, "assets/textures/collectible.png");
+	game->exit = load_png(game->mlx, "assets/textures/exit.png");
+}
+
+static void	register_hooks(t_game *game)
+{
+	mlx_key_hook(game->mlx, key_hook, game);
+	mlx_resize_hook(game->mlx, resize_hook, game);
+	mlx_close_hook(game->mlx, close_hook, game);
 }
 
 void	init_game(t_game *game, t_map *map)
@@ -47,11 +50,10 @@ void	init_game(t_game *game, t_map *map)
 		perror(mlx_strerror(mlx_errno));
 		exit(EXIT_FAILURE);
 	}
-	init_image(game);
+	init_images(game);
 	game->collectible_count = 0;
 	game->move_count = 0;
-	mlx_key_hook(game->mlx, key_hook, game);
-	mlx_close_hook(game->mlx, close_hook, game);
+	register_hooks(game);
 
 	draw_map(game);
 	mlx_loop(game->mlx);
