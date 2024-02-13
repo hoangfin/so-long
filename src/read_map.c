@@ -6,19 +6,19 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/11 14:58:39 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/13 11:31:23 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	count_line(const char *path)
+static int	count_line(const char *pathname)
 {
 	int		fd;
 	int		line_count;
 	char	*line;
 
-	fd = open(path, O_RDONLY);
+	fd = open(pathname, O_RDONLY);
 	if (fd < 0)
 		return (-1);
 	line_count = 0;
@@ -35,13 +35,13 @@ static int	count_line(const char *path)
 	return (line_count);
 }
 
-static int	fill_map(t_map *map, const char *path)
+static int	fill_map(t_map *map, const char *pathname)
 {
 	int		fd;
 	char	*line;
 	int		i;
 
-	fd = open(path, O_RDONLY);
+	fd = open(pathname, O_RDONLY);
 	if (fd < 0)
 		return (-1);
 	line = get_next_line(fd);
@@ -59,33 +59,31 @@ static int	fill_map(t_map *map, const char *path)
 	map->rows = i;
 	map->cols = ft_strlen(map->matrix[0]);
 	map->width = map->cols * 32;
-	map->height = map->rows * 32;
+	map->height = map->width * map->rows / map->cols;
 	return (0);
 }
 
-static void	delete_matrix(char **matrix)
+t_map	*read_map(const char *pathname)
 {
-	int	i;
+	t_map	*map;
+	int		line_count;
 
-	i = 0;
-	while (matrix[i] != NULL)
-		free(matrix[i++]);
-}
-
-int	read_map(t_map *map, const char *path)
-{
-	int	line_count;
-
-	line_count = count_line(path);
+	line_count = count_line(pathname);
 	if (line_count < 0)
-		return (-1);
+		return (NULL);
+	map = (t_map *)malloc(sizeof(t_map));
+	if (map == NULL)
+		return (NULL);
 	map->matrix = (char **)ft_calloc(line_count + 1, sizeof(char *));
 	if (map->matrix == NULL)
-		return (-1);
-	if (fill_map(map, path) < 0)
 	{
-		delete_matrix(map->matrix);
-		return (-1);
+		free(map);
+		return (NULL);
 	}
-	return (0);
+	if (fill_map(map, pathname) < 0)
+	{
+		delete_map(map);
+		return (NULL);
+	}
+	return (map);
 }

@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   delete_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 22:19:24 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/12 21:48:20 by hoatran          ###   ########.fr       */
+/*   Created: 2024/02/12 21:33:11 by hoatran           #+#    #+#             */
+/*   Updated: 2024/02/12 22:01:14 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	cleanup(t_game *game)
+void	delete_map(t_map *map)
 {
-	delete_map(game->map);
-	mlx_delete_image(game->mlx, game->space);
-	mlx_delete_image(game->mlx, game->wall);
-	mlx_delete_image(game->mlx, game->player);
-	mlx_delete_image(game->mlx, game->collectible);
-	mlx_delete_image(game->mlx, game->exit);
+	int	i;
+
+	i = 0;
+	if (map == NULL)
+		return ;
+	while (map->matrix[i] != NULL)
+		free(map->matrix[i++]);
+	free(map->matrix);
+	free(map);
 }

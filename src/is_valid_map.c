@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:22:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/11 16:01:05 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/13 14:55:33 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	is_enclosed(t_map *map)
 {
-	int32_t	i;
+	uint32_t	i;
 
 	i = 0;
 	while (i < map->rows)
@@ -35,8 +35,8 @@ static bool	is_enclosed(t_map *map)
 
 static bool	has_valid_elements(t_map *map, int p, int c, int e)
 {
-	int	row;
-	int	col;
+	uint32_t	row;
+	uint32_t	col;
 
 	row = 1;
 	while (row < map->rows - 1)

@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/11 16:42:27 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/13 20:57:13 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 
 int32_t	main(int argc, char **argv)
 {
-	t_map	map;
 	t_game	game;
 
 	if (argc != 2)
@@ -35,16 +34,8 @@ int32_t	main(int argc, char **argv)
 		perror(strerror(errno));
 		return (EXIT_FAILURE);
 	}
-	if (read_map(&map, argv[1]) < 0)
-	{
-		perror(strerror(errno));
-		return (EXIT_FAILURE);
-	}
-	// print_map(&map);
-	// if (!is_valid_map(&map))
-	// 	printf("INVALID MAP\n");
-	// delete_matrix(map.matrix);
-	init_game(&game, &map);
-
+	init_game(&game, argv[1]);
+	start_game(&game);
+	cleanup(&game);
 	return (EXIT_SUCCESS);
 }
