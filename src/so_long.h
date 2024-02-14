@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/14 21:34:25 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/14 23:35:38 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void		init_game(t_game *game, const char *pathname);
 void		start_game(t_game *game);
 void		cleanup(t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);
-// void		resize_hook(int32_t width, int32_t height, void *param);
 void		close_hook(void *param);
 // t_list		*find_shortest_path(t_map *map, int32_t target_x, int32_t target_y);
 t_path_node	*create_path_node(t_path_node *parent, int32_t x, int32_t y);
