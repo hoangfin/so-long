@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/14 14:54:26 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/14 21:34:25 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# define IMAGE_SIZE 32
+
+# ifndef RENDER_PIXELS
+#  define RENDER_PIXELS 32
+# endif
 
 # include "libft.h"
 # include <stdio.h>
