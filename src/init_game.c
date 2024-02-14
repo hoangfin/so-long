@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/14 15:34:53 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/14 21:34:25 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static mlx_image_t	*load_png(mlx_t *mlx, const char *path)
 		return (NULL);
 	image = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
-	if (mlx_resize_image(image, 32, 32) == false)
+	if (mlx_resize_image(image, RENDER_PIXELS, RENDER_PIXELS) == false)
 	{
 		mlx_delete_image(mlx, image);
 		return (NULL);
@@ -32,11 +32,11 @@ static mlx_image_t	*load_png(mlx_t *mlx, const char *path)
 
 static int	init_images(t_game *game)
 {
-	game->space = load_png(game->mlx, "assets/textures/spac.png");
-	game->wall = load_png(game->mlx, "assets/textures/wall.png");
-	game->player = load_png(game->mlx, "assets/textures/player/tim0.png");
-	game->collectible = load_png(game->mlx, "assets/textures/collectible.png");
-	game->exit = load_png(game->mlx, "assets/textures/exit.png");
+	game->space = load_png(game->mlx, "assets/textures/mandatory/space.png");
+	game->wall = load_png(game->mlx, "assets/textures/mandatory/wall.png");
+	game->player = load_png(game->mlx, "assets/textures/mandatory/player.png");
+	game->collectible = load_png(game->mlx, "assets/textures/mandatory/collectible.png");
+	game->exit = load_png(game->mlx, "assets/textures/mandatory/exit.png");
 	if (mlx_errno)
 		return (-1);
 	return (0);

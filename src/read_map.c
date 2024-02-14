@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/14 15:31:56 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/14 21:34:25 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	fill_map(t_map *map, const char *pathname)
 	// 	return (-1);
 	map->rows = i;
 	map->cols = ft_strlen(map->matrix[0]);
-	map->width = map->cols * 32;
+	map->width = map->cols * RENDER_PIXELS;
 	map->height = map->width * map->rows / map->cols;
 	return (0);
 }

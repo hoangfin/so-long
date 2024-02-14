@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:51:02 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/13 20:58:35 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/14 21:34:25 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,39 @@
 static void	draw_images(t_game *game, int32_t row, int32_t col)
 {
 	if (game->map->matrix[row][col] == '1')
-		mlx_image_to_window(game->mlx, game->wall, col * 32,
-			row * 32);
-	if (game->map->matrix[row][col] == '0')
-		mlx_image_to_window(game->mlx, game->space, col * 32,
-			row * 32);
+		mlx_image_to_window(game->mlx, game->wall, col * RENDER_PIXELS,
+			row * RENDER_PIXELS);
 	if (game->map->matrix[row][col] == 'P')
-		mlx_image_to_window(game->mlx, game->player, col * 32,
-			row * 32);
+		mlx_image_to_window(game->mlx, game->player, col * RENDER_PIXELS,
+			row * RENDER_PIXELS);
 	if (game->map->matrix[row][col] == 'C')
 		mlx_image_to_window(game->mlx, game->collectible,
-			col * 32, row * 32);
+			col * RENDER_PIXELS, row * RENDER_PIXELS);
 	if (game->map->matrix[row][col] == 'E')
-		mlx_image_to_window(game->mlx, game->exit, col * 32,
-			row * 32);
+		mlx_image_to_window(game->mlx, game->exit, col * RENDER_PIXELS,
+			row * RENDER_PIXELS);
+}
+
+static void	draw_floor(t_game *game)
+{
+	uint32_t	row;
+	uint32_t	col;
+
+	row = 0;
+	while (row < game->map->rows)
+	{
+		col = 0;
+		while (col < game->map->cols)
+		{
+			mlx_image_to_window(
+				game->mlx,
+				game->space,
+				col * RENDER_PIXELS,
+				row * RENDER_PIXELS);
+			col++;
+		}
+		row++;
+	}
 }
 
 static void	draw(t_game *game)
@@ -36,6 +55,7 @@ static void	draw(t_game *game)
 	uint32_t	row;
 	uint32_t	col;
 
+	draw_floor(game);
 	row = 0;
 	while (row < game->map->rows)
 	{
