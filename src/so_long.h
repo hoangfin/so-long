@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/14 23:35:38 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/15 21:56:04 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,17 @@ typedef struct s_game
 	uint32_t	move_count;
 }	t_game;
 
-t_map		*read_map(const char *pathname);
-void		delete_map(t_map *map);
-bool		is_valid_map(t_map *map);
-void		init_game(t_game *game, const char *pathname);
-void		start_game(t_game *game);
-void		cleanup(t_game *game);
-void		key_hook(mlx_key_data_t keydata, void *param);
-void		close_hook(void *param);
-// t_list		*find_shortest_path(t_map *map, int32_t target_x, int32_t target_y);
-t_path_node	*create_path_node(t_path_node *parent, int32_t x, int32_t y);
-void		move(t_game *game, int32_t x, int32_t y);
+t_map	*read_map(const char *pathname);
+void	delete_map(t_map *map);
+bool	is_valid_map(t_map *map);
+void	init_game(t_game *game, const char *pathname);
+void	start_game(t_game *game);
+void	cleanup(t_game *game);
+void	key_hook(mlx_key_data_t keydata, void *param);
+void	close_hook(void *param);
+void	exit_hook(void *param);
+void	move(t_game *game, int32_t dx, int32_t dy);
+void	collect(t_game *game, int32_t x, int32_t y);
+void	exit_game(t_game *game, int32_t x, int32_t y);
 
 #endif
