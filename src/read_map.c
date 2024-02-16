@@ -3,87 +3,101 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/16 16:38:34 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/17 00:10:50 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	count_line(const char *pathname)
+static int	count_rows(const char *pathname)
 {
 	int		fd;
-	int		line_count;
+	int		row_count;
 	char	*line;
 
 	fd = open(pathname, O_RDONLY);
 	if (fd < 0)
 		return (-1);
-	line_count = 0;
+	row_count = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		line_count++;
+		row_count++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
 	if (errno)
 		return (-1);
-	return (line_count);
+	return (row_count);
 }
 
-static int	fill_map(t_map *map, const char *pathname)
+static char	**make_grid(size_t row_count, const char *pathname)
 {
 	int		fd;
+	char	**grid;
 	char	*line;
 	int		i;
 
 	fd = open(pathname, O_RDONLY);
 	if (fd < 0)
 		return (-1);
+	grid = (char **)ft_calloc(row_count + 1, sizeof(char *));
+	if (grid == NULL)
+		return (NULL);
 	line = get_next_line(fd);
 	i = 0;
 	while (line != NULL)
 	{
-		map->grid[i++] = ft_strdup_chr(line, '\n');
+		grid[i++] = ft_strdup_chr(line, '\n');
 		free(line);
 		line = get_next_line(fd);
 	}
-	map->grid[i] = NULL;
+	grid[i] = NULL;
 	close(fd);
 	if (errno)
-		return (-1);
-	map->rows = i;
-	map->cols = ft_strlen(map->grid[0]);
-	map->width = map->cols * RENDER_PIXELS;
-	map->height = map->width * map->rows / map->cols;
-	return (0);
+		return (NULL);
+	return (grid);
+}
+
+static void	delete_grid(char **grid)
+{
+	int	i;
+
+	i = 0;
+	while (grid[i] != NULL)
+		free(grid[i++]);
+	free(grid);
 }
 
 t_map	*read_map(const char *pathname)
 {
 	t_map	*map;
-	int		line_count;
+	int		row_count;
+	char	**grid;
 
-	line_count = count_line(pathname);
-	if (line_count < 0)
+	row_count = count_rows(pathname);
+	if (row_count < 0)
 		return (NULL);
+	grid = make_grid((size_t)row_count, pathname);
+	if (validate(grid, row_count) == false)
+	{
+		delete_grid(grid);
+		return (NULL);
+	}
 	map = (t_map *)malloc(sizeof(t_map));
 	if (map == NULL)
-		return (NULL);
-	map->grid = (char **)ft_calloc(line_count + 1, sizeof(char *));
-	if (map->grid == NULL)
 	{
-		free(map);
+		delete_grid(grid);
 		return (NULL);
 	}
-	if (fill_map(map, pathname) < 0)
-	{
-		delete_map(map);
-		return (NULL);
-	}
+	map->grid = grid;
+	map->rows = (uint32_t)row_count;
+	map->cols = ft_strlen(map->grid[0]);
+	map->width = map->cols * RENDER_PIXELS;
+	map->height = map->width * map->rows / map->cols;
 	return (map);
 }

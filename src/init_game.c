@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/16 17:38:59 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/16 23:00:43 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,12 @@ static void	register_hooks(t_game *game)
 
 void	init_game(t_game *game, const char *pathname)
 {
-	if (init_map(game, pathname) < 0)
-	{
-		perror("Failed to read map");
-		exit(EXIT_FAILURE);
-	}
+	// if (init_map(game, pathname) < 0)
+	// {
+	// 	perror("Failed to read map");
+	// 	exit(EXIT_FAILURE);
+	// }
+	game->map = read_map(pathname);
 	game->mlx = mlx_init(game->map->width, game->map->height, "so_long", true);
 	if (game->mlx == NULL)
 	{
