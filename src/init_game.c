@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/15 21:57:20 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/16 09:42:54 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,33 @@ static int	init_images(t_game *game)
 	return (0);
 }
 
+static uint32_t	count_collectible(t_map *map)
+{
+	uint32_t	row;
+	uint32_t	col;
+	uint32_t	count;
+
+	row = 1;
+	count = 0;
+	while (row < map->rows - 1)
+	{
+		col = 1;
+		while (col < map->cols - 1)
+		{
+			if (map->matrix[row][col] == 'C')
+				count++;
+			col++;
+		}
+		row++;
+	}
+	return (count);
+}
+
 static void	register_hooks(t_game *game)
 {
 	mlx_key_hook(game->mlx, key_hook, game);
 	mlx_close_hook(game->mlx, close_hook, game);
-	// mlx_loop_hook(game->mlx, exit_hook, game);
+	mlx_loop_hook(game->mlx, exit_hook, game);
 }
 
 void	init_game(t_game *game, const char *pathname)
@@ -74,7 +96,7 @@ void	init_game(t_game *game, const char *pathname)
 		ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
 		exit(EXIT_FAILURE);
 	}
-	game->collectible_count = 0;
+	game->collectible_count = count_collectible(game->map);
 	game->move_count = 0;
 	register_hooks(game);
 }
