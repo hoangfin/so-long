@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:51:02 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/14 21:34:25 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/16 16:38:34 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 static void	draw_images(t_game *game, int32_t row, int32_t col)
 {
-	if (game->map->matrix[row][col] == '1')
-		mlx_image_to_window(game->mlx, game->wall, col * RENDER_PIXELS,
-			row * RENDER_PIXELS);
-	if (game->map->matrix[row][col] == 'P')
-		mlx_image_to_window(game->mlx, game->player, col * RENDER_PIXELS,
-			row * RENDER_PIXELS);
-	if (game->map->matrix[row][col] == 'C')
-		mlx_image_to_window(game->mlx, game->collectible,
-			col * RENDER_PIXELS, row * RENDER_PIXELS);
-	if (game->map->matrix[row][col] == 'E')
-		mlx_image_to_window(game->mlx, game->exit, col * RENDER_PIXELS,
-			row * RENDER_PIXELS);
+	if (game->map->grid[row][col] == '1')
+		mlx_image_to_window(
+			game->mlx, game->wall, col * RENDER_PIXELS, row * RENDER_PIXELS \
+		);
+	if (game->map->grid[row][col] == 'P')
+		mlx_image_to_window(
+			game->mlx, game->player, col * RENDER_PIXELS, row * RENDER_PIXELS \
+		);
+	if (game->map->grid[row][col] == 'C')
+		mlx_image_to_window(
+			game->mlx, \
+			game->collectible, \
+			col * RENDER_PIXELS, \
+			row * RENDER_PIXELS \
+		);
+	if (game->map->grid[row][col] == 'E')
+		mlx_image_to_window(
+			game->mlx, game->exit, col * RENDER_PIXELS, row * RENDER_PIXELS \
+		);
 }
 
 static void	draw_floor(t_game *game)
@@ -43,7 +50,8 @@ static void	draw_floor(t_game *game)
 				game->mlx,
 				game->space,
 				col * RENDER_PIXELS,
-				row * RENDER_PIXELS);
+				row * RENDER_PIXELS \
+			);
 			col++;
 		}
 		row++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/15 21:56:04 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/16 16:38:34 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 typedef struct s_map
 {
-	char		**matrix;
+	char		**grid;
 	uint32_t	rows;
 	uint32_t	cols;
 	uint32_t	width;

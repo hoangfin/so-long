@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   delete_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:33:11 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/12 22:01:14 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/16 16:38:34 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	delete_map(t_map *map)
 	i = 0;
 	if (map == NULL)
 		return ;
-	while (map->matrix[i] != NULL)
-		free(map->matrix[i++]);
-	free(map->matrix);
+	while (map->grid[i] != NULL)
+		free(map->grid[i++]);
+	free(map->grid);
 	free(map);
 }
