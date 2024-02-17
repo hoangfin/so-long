@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_string.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:37:34 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/09 18:25:16 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/18 01:25:52 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ typedef struct s_string
 
 t_string	*ft_string(char *str);
 char		*ft_strdup_chr(char *source, char delimiter);
+char		**ft_grid(size_t rows, size_t cols, int c);
 
 #endif
