@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:51:02 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/16 16:38:34 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/17 16:44:23 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void	draw_images(t_game *game, int32_t row, int32_t col)
 
 static void	draw_floor(t_game *game)
 {
-	uint32_t	row;
-	uint32_t	col;
+	int32_t	row;
+	int32_t	col;
 
 	row = 0;
 	while (row < game->map->rows)
@@ -60,8 +60,8 @@ static void	draw_floor(t_game *game)
 
 static void	draw(t_game *game)
 {
-	uint32_t	row;
-	uint32_t	col;
+	int32_t	row;
+	int32_t	col;
 
 	draw_floor(game);
 	row = 0;

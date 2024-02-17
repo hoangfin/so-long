@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/17 10:53:09 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/17 15:01:57 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ static mlx_image_t	*load_png(mlx_t *mlx, const char *path)
 	mlx_delete_texture(texture);
 	if (image->width != RENDER_PIXELS)
 	{
-		if (!mlx_resize_image(
-			image, RENDER_PIXELS, image->height * RENDER_PIXELS / image->width
+		if (!mlx_resize_image(\
+			image, \
+			RENDER_PIXELS, \
+			image->height * RENDER_PIXELS / image->width \
 		))
 		{
 			mlx_delete_image(mlx, image);
@@ -49,28 +51,6 @@ static int	init_images(t_game *game)
 	if (mlx_errno)
 		return (-1);
 	return (0);
-}
-
-static uint32_t	count_collectible(t_map *map)
-{
-	uint32_t	row;
-	uint32_t	col;
-	uint32_t	count;
-
-	row = 1;
-	count = 0;
-	while (row < map->rows - 1)
-	{
-		col = 1;
-		while (col < map->cols - 1)
-		{
-			if (map->grid[row][col] == 'C')
-				count++;
-			col++;
-		}
-		row++;
-	}
-	return (count);
 }
 
 static void	register_hooks(t_game *game)
@@ -101,7 +81,7 @@ void	init_game(t_game *game, const char *pathname)
 		ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
 		exit(EXIT_FAILURE);
 	}
-	game->collectible_count = count_collectible(game->map);
+	game->collectible_count = count_collectibles(game->map);
 	game->move_count = 0;
 	register_hooks(game);
 }

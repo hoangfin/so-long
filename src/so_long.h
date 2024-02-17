@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/17 13:37:46 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/17 16:43:36 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 
 typedef struct s_map
 {
-	char		**grid;
-	uint32_t	rows;
-	uint32_t	cols;
-	uint32_t	width;
-	uint32_t	height;
+	char	**grid;
+	int32_t	rows;
+	int32_t	cols;
+	int32_t	width;
+	int32_t	height;
 }	t_map;
 
 typedef struct s_game
@@ -47,17 +47,18 @@ typedef struct s_game
 	uint32_t	move_count;
 }	t_game;
 
-t_map	*read_map(const char *pathname);
-void	delete_map(t_map *map);
-bool	is_valid_map(t_map *map);
-void	init_game(t_game *game, const char *pathname);
-void	start_game(t_game *game);
-void	cleanup(t_game *game);
-void	key_hook(mlx_key_data_t keydata, void *param);
-void	close_hook(void *param);
-void	exit_hook(void *param);
-void	move(t_game *game, int32_t dx, int32_t dy);
-void	collect(t_game *game, int32_t x, int32_t y);
-void	exit_game(t_game *game, int32_t x, int32_t y);
+t_map		*read_map(const char *pathname);
+void		delete_map(t_map *map);
+bool		validate(char **grid, int32_t row_count);
+void		init_game(t_game *game, const char *pathname);
+void		start_game(t_game *game);
+void		cleanup(t_game *game);
+void		key_hook(mlx_key_data_t keydata, void *param);
+void		close_hook(void *param);
+void		exit_hook(void *param);
+void		move(t_game *game, int32_t dx, int32_t dy);
+uint32_t	count_collectibles(t_map *map);
+void		collect(t_game *game, int32_t x, int32_t y);
+void		exit_game(t_game *game, int32_t x, int32_t y);
 
 #endif
