@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/17 08:51:48 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/17 13:37:46 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@ typedef struct s_map
 	uint32_t	width;
 	uint32_t	height;
 }	t_map;
-
-typedef struct s_path_node
-{
-	struct s_path_node	*parent;
-	int32_t				x;
-	int32_t				y;
-}	t_path_node;
 
 typedef struct s_game
 {
