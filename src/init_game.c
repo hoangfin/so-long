@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/16 23:00:43 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/17 10:53:09 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,15 @@ static mlx_image_t	*load_png(mlx_t *mlx, const char *path)
 		return (NULL);
 	image = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
-	if (mlx_resize_image(image, RENDER_PIXELS, RENDER_PIXELS) == false)
+	if (image->width != RENDER_PIXELS)
 	{
-		mlx_delete_image(mlx, image);
-		return (NULL);
+		if (!mlx_resize_image(
+			image, RENDER_PIXELS, image->height * RENDER_PIXELS / image->width
+		))
+		{
+			mlx_delete_image(mlx, image);
+			return (NULL);
+		}
 	}
 	return (image);
 }
