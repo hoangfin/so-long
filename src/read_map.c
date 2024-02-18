@@ -3,36 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/17 16:49:11 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/19 00:41:46 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int32_t	count_rows(const char *pathname)
+static int	count(const char *pathname, size_t *row_count, size_t *col_count)
 {
 	int		fd;
-	int32_t	row_count;
 	char	*line;
 
 	fd = open(pathname, O_RDONLY);
 	if (fd < 0)
 		return (-1);
-	row_count = 0;
-	line = get_next_line(fd);
+	*row_count = 0;
+	*col_count = 0;
+	if (get_next_line(fd, &line) < 0)
+		return (close(fd), -1);
 	while (line != NULL)
 	{
 		row_count++;
 		free(line);
-		line = get_next_line(fd);
+		if (get_next_line(fd, &line) < 0)
+			return (close(fd), -1);
 	}
 	close(fd);
-	// if (errno)
-	// 	return (-1);
-	return (row_count);
+	return (0);
 }
 
 static char	**make_grid(int32_t row_count, const char *pathname)
@@ -73,16 +73,19 @@ static void	delete_grid(char **grid)
 	free(grid);
 }
 
-t_map	*read_map(const char *pathname)
+t_grid	*read_map(const char *pathname)
 {
-	t_map	*map;
-	int		row_count;
-	char	**grid;
+	t_grid	*map;
+	size_t	row_count;
+	size_t	col_count;
 
-	row_count = count_rows(pathname);
-	if (row_count < 0)
+	if (!ft_ends_with(".ber"))
 		return (NULL);
-	grid = make_grid(row_count, pathname);
+	if (count(pathname, &row_count, &col_count) < 0)
+		return (NULL);
+	map = ft_grid(row_count, col_count, 0);
+	if (map == NULL)
+		return (NULL);
 	if (validate(grid, row_count) == false)
 	{
 		delete_grid(grid);
@@ -94,10 +97,6 @@ t_map	*read_map(const char *pathname)
 		delete_grid(grid);
 		return (NULL);
 	}
-	map->grid = grid;
-	map->rows = row_count;
-	map->cols = ft_strlen(map->grid[0]);
-	map->width = map->cols * RENDER_PIXELS;
-	map->height = map->width * map->rows / map->cols;
+
 	return (map);
 }

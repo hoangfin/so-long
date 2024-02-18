@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_grid_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 13:44:26 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/19 00:17:40 by hoatran          ###   ########.fr       */
+/*   Created: 2024/02/18 16:12:54 by hoatran           #+#    #+#             */
+/*   Updated: 2024/02/18 16:16:47 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft_string.h"
 
-# include "../common/libft_common.h"
+void	ft_grid_print(t_grid *grid)
+{
+	size_t	row;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
-
-int	get_next_line(int fd, char **line);
-
-#endif
+	row = 0;
+	while (row < grid->row_count)
+		ft_putendl_fd(grid->matrix[row++], 1);
+}

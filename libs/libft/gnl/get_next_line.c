@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:10:59 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/09 22:40:48 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/19 00:17:18 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,27 +89,26 @@ static ssize_t	update_cache(int fd, char **cache)
  * @returns	{char*}		Return a line read or NULL if there is nothing else
  * 						to read, or an error occurred.
 */
-char	*get_next_line(int fd)
+int	get_next_line(int fd, char **line)
 {
 	static char	*caches[2048] = {NULL};
-	char		*line;
 	ssize_t		status;
 
-	line = NULL;
+	*line = NULL;
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 2047)
-		return (NULL);
+		return (-1);
 	status = update_cache(fd, &caches[fd]);
-	if (status < 0 || shift_line(&caches[fd], &line) == -1)
+	if (status < 0 || shift_line(&caches[fd], line) == -1)
 	{
 		free(caches[fd]);
 		caches[fd] = NULL;
-		return (NULL);
+		return (-1);
 	}
-	if (line)
-		return (line);
+	if (*line)
+		return (0);
 	if (caches[fd] && *(caches[fd]) != '\0')
-		line = ft_strdup(caches[fd]);
+		*line = ft_strdup(caches[fd]);
 	free(caches[fd]);
 	caches[fd] = NULL;
-	return (line);
+	return (0);
 }

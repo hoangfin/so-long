@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/17 15:01:57 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/18 19:37:25 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	register_hooks(t_game *game)
 {
 	mlx_key_hook(game->mlx, key_hook, game);
 	mlx_close_hook(game->mlx, close_hook, game);
-	// mlx_loop_hook(game->mlx, exit_hook, game);
+	mlx_loop_hook(game->mlx, loop_hook, game);
 }
 
 void	init_game(t_game *game, const char *pathname)
@@ -68,7 +68,12 @@ void	init_game(t_game *game, const char *pathname)
 	// 	exit(EXIT_FAILURE);
 	// }
 	game->map = read_map(pathname);
-	game->mlx = mlx_init(game->map->width, game->map->height, "so_long", true);
+	game->mlx = mlx_init(
+		game->map->col_count * RENDER_PIXELS,
+		game->map->row_count * RENDER_PIXELS,
+		"so_long",
+		true
+	);
 	if (game->mlx == NULL)
 	{
 		delete_map(game->map);
@@ -84,4 +89,5 @@ void	init_game(t_game *game, const char *pathname)
 	game->collectible_count = count_collectibles(game->map);
 	game->move_count = 0;
 	register_hooks(game);
+	game->state = GAME_RUNNING;
 }
