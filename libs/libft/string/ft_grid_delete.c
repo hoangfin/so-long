@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_string.h                                     :+:      :+:    :+:   */
+/*   ft_grid_delete.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 15:37:34 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/18 10:29:36 by hoatran          ###   ########.fr       */
+/*   Created: 2024/02/18 10:17:30 by hoatran           #+#    #+#             */
+/*   Updated: 2024/02/18 10:29:14 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_STRING_H
-# define LIBFT_STRING_H
+#include "libft_string.h"
 
-# include "../common/libft_common.h"
-
-typedef struct s_string
+void	ft_grid_delete(char ***grid)
 {
-	char	*content;
-	size_t	length;
-}	t_string;
+	char	**temp;
 
-t_string	*ft_string(char *str);
-char		*ft_strdup_chr(char *source, char delimiter);
-char		**ft_grid(size_t rows, size_t cols, int c);
-void		ft_grid_delete(char ***grid);
-
-#endif
+	if (grid == NULL)
+		return ;
+	temp = *grid;
+	while (*temp != NULL)
+	{
+		free(*temp);
+		temp++;
+	}
+	free(*grid);
+	*grid = NULL;
+}
