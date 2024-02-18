@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:37:34 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/18 10:29:36 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/18 11:17:56 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,16 @@ typedef struct s_string
 	size_t	length;
 }	t_string;
 
+typedef struct s_grid
+{
+	char	**matrix;
+	size_t	row_count;
+	size_t	col_count;
+}	t_grid;
+
 t_string	*ft_string(char *str);
 char		*ft_strdup_chr(char *source, char delimiter);
-char		**ft_grid(size_t rows, size_t cols, int c);
-void		ft_grid_delete(char ***grid);
+t_grid		*ft_grid(size_t rows, size_t cols, int c);
+void		ft_grid_delete(t_grid **grid);
 
 #endif

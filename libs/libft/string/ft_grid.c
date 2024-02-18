@@ -6,13 +6,13 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 01:26:30 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/18 01:36:58 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/18 11:14:49 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_string.h"
 
-char	**ft_grid(size_t rows, size_t cols, int c)
+static char	**create_matrix(size_t rows, size_t cols, int c)
 {
 	char	**grid;
 	size_t	i;
@@ -36,5 +36,23 @@ char	**ft_grid(size_t rows, size_t cols, int c)
 		i++;
 	}
 	grid[i] = NULL;
+	return (grid);
+}
+
+t_grid	*ft_grid(size_t rows, size_t cols, int c)
+{
+	t_grid	*grid;
+
+	grid = (t_grid *)malloc(sizeof(t_grid));
+	if (grid == NULL)
+		return (NULL);
+	grid->matrix = create_matrix(rows, cols, c);
+	if (grid->matrix == NULL)
+	{
+		free(grid);
+		return (NULL);
+	}
+	grid->row_count = rows;
+	grid->col_count = cols;
 	return (grid);
 }
