@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/19 18:02:29 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/19 23:08:33 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,6 @@ typedef struct s_game
 	uint32_t		move_count;
 	t_game_state	state;
 }	t_game;
-
-typedef enum s_solong_error
-{
-	SOLONG_NOERROR,			// No Errors
-	SOLONG_INVEXT,			// File has an invalid extension
-	SOLONG_INVFILE,			// File was invalid / does not exist.
-	SOLONG_INVPNG,			// Something is wrong with the given PNG file.
-	SOLONG_INVPOS,			// The specified X/Y positions are out of bounds.
-	SOLONG_INVDIM,			// The specified W/H dimensions are out of bounds.
-	SOLONG_MEMFAIL,			// Dynamic memory allocation has failed.
-	SOLONG_GLADFAIL,		// OpenGL loader has failed.
-	SOLONG_WINFAIL,			// Failed to create a window.
-	SOLONG_ERRMAX,			// Error count
-}	t_solong_error;
 
 t_grid		*read_map(const char *pathname);
 void		delete_map(t_map *map);
