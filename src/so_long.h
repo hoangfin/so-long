@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/19 00:36:03 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/19 18:02:29 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,32 +55,24 @@ typedef struct s_game
 	t_game_state	state;
 }	t_game;
 
-// The error codes used to identify the correct error message.
-typedef enum e_solong_errno
+typedef enum s_solong_error
 {
-	MLX_SUCCESS,		// No Errors
-	MLX_INVEXT,			// File has an invalid extension
-	MLX_INVFILE,		// File was invalid / does not exist.
-	MLX_INVPNG,			// Something is wrong with the given PNG file.
-	MLX_INVXPM,			// Something is wrong with the given XPM file.
-	MLX_INVPOS,			// The specified X/Y positions are out of bounds.
-	MLX_INVDIM,			// The specified W/H dimensions are out of bounds.
-	MLX_INVIMG,			// The provided image is invalid, might indicate mismanagement of images.
-	MLX_VERTFAIL,		// Failed to compile the vertex shader.
-	MLX_FRAGFAIL,		// Failed to compile the fragment shader.
-	MLX_SHDRFAIL,		// Failed to compile the shaders.
-	MLX_MEMFAIL,		// Dynamic memory allocation has failed.
-	MLX_GLADFAIL,		// OpenGL loader has failed.
-	MLX_GLFWFAIL,		// GLFW failed to initialize.
-	MLX_WINFAIL,		// Failed to create a window.
-	MLX_STRTOOBIG,		// The string is too big to be drawn.
-	MLX_ERRMAX,			// Error count
-}	t_solong_errno;
+	SOLONG_NOERROR,			// No Errors
+	SOLONG_INVEXT,			// File has an invalid extension
+	SOLONG_INVFILE,			// File was invalid / does not exist.
+	SOLONG_INVPNG,			// Something is wrong with the given PNG file.
+	SOLONG_INVPOS,			// The specified X/Y positions are out of bounds.
+	SOLONG_INVDIM,			// The specified W/H dimensions are out of bounds.
+	SOLONG_MEMFAIL,			// Dynamic memory allocation has failed.
+	SOLONG_GLADFAIL,		// OpenGL loader has failed.
+	SOLONG_WINFAIL,			// Failed to create a window.
+	SOLONG_ERRMAX,			// Error count
+}	t_solong_error;
 
 t_grid		*read_map(const char *pathname);
 void		delete_map(t_map *map);
 bool		validate(char **grid, int32_t row_count);
-void		init_game(t_game *game, const char *pathname);
+int			init_game(t_game *game, const char *pathname);
 void		start_game(t_game *game);
 void		cleanup(t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);

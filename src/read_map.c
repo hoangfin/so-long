@@ -3,33 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/19 00:41:46 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/19 17:42:58 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+static int	count_rows(const char *pathname)
+{
+	int		fd;
+	int		row_count;
+	int		status;
+	char	*line;
+	size_t	line_length;
+
+	fd = open(pathname, O_RDONLY);
+	if (fd < 0)
+		return (ft_putendl_fd("Error\nCouldn't open file", 2), -1);
+	status = get_next_line(fd, &line);
+	if (status < 0)
+		return (ft_putendl_fd("Error\nCouldn't read file", 2), -1);
+	while (get_next_line(fd, &line) > -1 && line != NULL)
+	{
+		row_count++;
+
+		if (line_length == 0)
+			return (ft_putendl_fd("Error\nMap has empty line", 2), free(line), -1);
+		free(line);
+	}
+	close(fd);
+	return (0);
+}
+
 static int	count(const char *pathname, size_t *row_count, size_t *col_count)
 {
 	int		fd;
 	char	*line;
+	size_t	line_length;
 
 	fd = open(pathname, O_RDONLY);
 	if (fd < 0)
-		return (-1);
+		return (ft_putendl_fd("Error\nCouldn't open file", 2), -1);
 	*row_count = 0;
 	*col_count = 0;
-	if (get_next_line(fd, &line) < 0)
-		return (close(fd), -1);
-	while (line != NULL)
+	while (get_next_line(fd, &line) > -1 && line != NULL)
 	{
 		row_count++;
+		line_length = ft_strlen(line);
+		if (line_length == 0)
+			return (ft_putendl_fd("Error\nMap has empty line", 2), free(line), -1);
 		free(line);
-		if (get_next_line(fd, &line) < 0)
-			return (close(fd), -1);
+		if (*col_count == 0)
+			*col_count = line_length;
+		if (*col_count != line_length)
+			return (ft_putendl_fd("Map file is not rect", 2), close(fd), -1);
 	}
 	close(fd);
 	return (0);
@@ -63,24 +93,12 @@ static char	**make_grid(int32_t row_count, const char *pathname)
 	return (grid);
 }
 
-static void	delete_grid(char **grid)
-{
-	int	i;
-
-	i = 0;
-	while (grid[i] != NULL)
-		free(grid[i++]);
-	free(grid);
-}
-
 t_grid	*read_map(const char *pathname)
 {
 	t_grid	*map;
 	size_t	row_count;
 	size_t	col_count;
 
-	if (!ft_ends_with(".ber"))
-		return (NULL);
 	if (count(pathname, &row_count, &col_count) < 0)
 		return (NULL);
 	map = ft_grid(row_count, col_count, 0);
@@ -91,12 +109,5 @@ t_grid	*read_map(const char *pathname)
 		delete_grid(grid);
 		return (NULL);
 	}
-	map = (t_map *)malloc(sizeof(t_map));
-	if (map == NULL)
-	{
-		delete_grid(grid);
-		return (NULL);
-	}
-
 	return (map);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/18 19:37:25 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/19 13:24:06 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,34 +60,34 @@ static void	register_hooks(t_game *game)
 	mlx_loop_hook(game->mlx, loop_hook, game);
 }
 
-void	init_game(t_game *game, const char *pathname)
+int	init_game(t_game *game, const char *pathname)
 {
-	// if (init_map(game, pathname) < 0)
-	// {
-	// 	perror("Failed to read map");
-	// 	exit(EXIT_FAILURE);
-	// }
 	game->map = read_map(pathname);
-	game->mlx = mlx_init(
-		game->map->col_count * RENDER_PIXELS,
-		game->map->row_count * RENDER_PIXELS,
-		"so_long",
-		true
+	if (game->map == NULL)
+		return (-1);
+	game->mlx = mlx_init(\
+		game->map->col_count * RENDER_PIXELS, \
+		game->map->row_count * RENDER_PIXELS, \
+		"so_long", \
+		true \
 	);
 	if (game->mlx == NULL)
-	{
-		delete_map(game->map);
-		ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
-		exit(EXIT_FAILURE);
-	}
+		return (-1);
+	// {
+	// 	delete_map(game->map);
+	// 	ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
+	// 	exit(EXIT_FAILURE);
+	// }
 	if (init_images(game) < 0)
-	{
-		cleanup(game);
-		ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
-		exit(EXIT_FAILURE);
-	}
+		return (-1);
+	// {
+	// 	cleanup(game);
+	// 	ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
+	// 	exit(EXIT_FAILURE);
+	// }
 	game->collectible_count = count_collectibles(game->map);
 	game->move_count = 0;
 	register_hooks(game);
 	game->state = GAME_RUNNING;
+	return (0);
 }
