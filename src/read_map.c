@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/20 13:38:08 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:22:36 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	count_rows(const char *pathname)
 	close(fd);
 	if (errno)
 		return (perror("Error\n"), -1);
-	return (0);
+	return (row_count);
 }
 
 static int	init_map(char **map, const char *pathname)
