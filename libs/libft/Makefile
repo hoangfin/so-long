@@ -59,8 +59,8 @@ SOURCES := $(COMMON_DIR)/ft_atoi.c \
 		$(STRING_DIR)/ft_string.c \
 		$(STRING_DIR)/ft_ends_with.c \
 		$(STRING_DIR)/ft_strdup_chr.c \
-		$(STRING_DIR)/ft_grid.c \
-		$(STRING_DIR)/ft_grid_delete.c \
+		$(STRING_DIR)/ft_matrix.c \
+		$(STRING_DIR)/ft_matrix_delete.c \
 		$(STRING_DIR)/ft_grid_print.c \
 		$(ARRAY_DIR)/ft_array.c \
 		$(ARRAY_DIR)/ft_array_from.c \
