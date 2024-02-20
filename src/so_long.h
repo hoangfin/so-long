@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/19 23:08:33 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/20 13:33:04 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_game
 	t_game_state	state;
 }	t_game;
 
-t_grid		*read_map(const char *pathname);
+char		**read_map(const char *pathname);
 void		delete_map(t_map *map);
 bool		validate(char **grid, int32_t row_count);
 int			init_game(t_game *game, const char *pathname);

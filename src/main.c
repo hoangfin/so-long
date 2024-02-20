@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/19 23:21:38 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/20 13:29:43 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 int32_t	main(int argc, char **argv)
 {
+	char	**map;
 	t_game	game;
 
 	if (argc < 2)
@@ -35,10 +36,11 @@ int32_t	main(int argc, char **argv)
 		return (ft_putendl_fd("Only one argument allowed", 2), EXIT_FAILURE);
 	if (!ft_ends_with(argv[1], ".ber"))
 		return (ft_putendl_fd("Map file must end with .ber", 2), EXIT_FAILURE);
-	if (init_game(&game, argv[1]) < 0)
-		return (EXIT_FAILURE);
+	map = read_map(argv[1]);
+	// if (init_game(&game, argv[1]) < 0)
+	// 	return (EXIT_FAILURE);
 	// print_map(game.map);
-	start_game(&game);
-	cleanup(&game);
+	// start_game(&game);
+	// cleanup(&game);
 	return (EXIT_SUCCESS);
 }
