@@ -3,5 +3,4 @@ MLX42
 *.pdf
 *.o
 so_long
-Makefile
 libft.a
