@@ -6,11 +6,11 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 19:52:19 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/11 17:50:51 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/20 23:56:23 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 /**
  * Callback function used to handle window closing which is called when the

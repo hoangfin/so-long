@@ -6,11 +6,11 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 23:18:04 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/14 22:07:33 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/20 23:56:28 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 /**
  * Callback function used to handle keypresses.

@@ -19,6 +19,7 @@ CFLAGS := -g \
 SOURCES := $(SOURCE_DIR)/main.c \
 			$(SOURCE_DIR)/map/delete_map.c \
 			$(SOURCE_DIR)/map/has_valid_chars.c \
+			$(SOURCE_DIR)/map/has_valid_path.c \
 			$(SOURCE_DIR)/map/has_valid_pec.c \
 			$(SOURCE_DIR)/map/is_enclosed.c \
 			$(SOURCE_DIR)/map/is_rectangular.c \
@@ -26,8 +27,9 @@ SOURCES := $(SOURCE_DIR)/main.c \
 			$(SOURCE_DIR)/map/validate_map.c \
 			$(SOURCE_DIR)/init_game.c \
 			$(SOURCE_DIR)/start_game.c \
-			$(SOURCE_DIR)/close_hook.c \
-			$(SOURCE_DIR)/key_hook.c \
+			$(SOURCE_DIR)/hooks/close_hook.c \
+			$(SOURCE_DIR)/hooks/key_hook.c \
+			$(SOURCE_DIR)/hooks/loop_hook.c \
 			$(SOURCE_DIR)/move.c \
 			$(SOURCE_DIR)/count_collectibles.c \
 			$(SOURCE_DIR)/collect.c \
