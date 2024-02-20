@@ -3,29 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   has_valid_path.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:06:33 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/20 17:12:28 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 00:29:25 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-bool	has_valid_path(char **map, size_t row_count, size_t col_count)
-{
-
-}
-
-static void	get_player_position(t_grid *grid, int32_t *row, int32_t *col)
+static void	get_player_position(char **map, int *row, int *col)
 {
 	*row = 0;
-	while (*row < grid->row_count)
+	while (map[*row] != NULL)
 	{
 		*col = 0;
-		while (*col < grid->col_count)
+		while (map[*row][*col] != '\0')
 		{
-			if (grid->matrix[*row][*col] == 'P')
+			if (map[*row][*col] == 'P')
 				return ;
 			(*col)++;
 		}
@@ -35,38 +30,57 @@ static void	get_player_position(t_grid *grid, int32_t *row, int32_t *col)
 	*col = -1;
 }
 
-static void	dfs(char **map, int row, int col, char **visited)
+static bool	is_valid_move(char **map, int row, int col)
 {
-	if (map[row][col] == 'P')
-		visited[row][col] = 'P';
-	else if (map[row][col] == 'E')
-		visited[row][col] = 'E';
-	else if (map[row][col] == 'C')
-		visited[row][col] = 'C';
-	else
-		visited[row][col] = 'Y';
-	if (col - 1 >= 0 && col - 1 < grid->col_count && grid->matrix[row][col - 1] != '1')
-		dfs(grid, row, col - 1, visited);
-	if (col + 1 >= 0 && col + 1 < grid->col_count && grid->matrix[row][col + 1] != '1')
-		dfs(grid, row, col + 1, visited);
-	if (row - 1 >= 0 && row - 1 < grid->row_count && grid->matrix[row - 1][col] != '1')
-		dfs(grid, row - 1, col, visited);
-	if (row + 1 >= 0 && row + 1 < grid->row_count && grid->matrix[row + 1][col] != '1')
-		dfs(grid, row + 1, col, visited);
+	size_t	row_count;
+	size_t	col_count;
+
+	row_count = 0;
+	while (map[row_count] != NULL)
+		row_count++;
+	col_count = ft_strlen(map[0]);
+
+	if (row < 0 || row >= row_count || col < 0 || col >= col_count)
+		return (false);
+	if (map[row][col] == '1')
+		return (false);
+	return (true);
 }
 
-bool	has_valid_path(t_grid *grid)
+static void	dfs(char **map, int row, int col, char **visited)
 {
-	t_grid	*visited;
-	int32_t	start_row;
-	int32_t	start_col;
+	static const int	directions[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+	int					i;
+	int					next_row;
+	int					next_col;
 
-	visited = ft_grid(grid->row_count, grid->col_count, '.');
+	visited[row][col] = map[row][col];
+	i = 0;
+	while (i < 4)
+	{
+		next_row = row + directions[i][0];
+		next_col = col + directions[i][1];
+		if (
+			is_valid_move(map, next_row, next_col)
+			&& visited[next_row][next_col] == '.'
+		)
+			dfs(map, next_row, next_col, visited);
+		i++;
+	}
+}
+
+bool	has_valid_path(char **map, size_t row_count, size_t col_count)
+{
+	char	**visited;
+	int		start_row;
+	int		start_col;
+
+	visited = ft_matrix(row_count, col_count, '.');
 	if (visited == NULL)
-		return (false);
-	get_player_position(grid, &start_row, &start_col);
-	dfs(grid, start_row, start_col, visited);
+		return (perror("Error\n"), false);
+	get_player_position(map, &start_row, &start_col);
+	dfs(map, start_row, start_col, visited);
 	ft_grid_print(visited);
-	ft_grid_delete(&visited);
+	ft_matrix_delete(&visited);
 	return (false);
 }
