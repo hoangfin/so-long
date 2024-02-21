@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 12:02:03 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 15:24:40 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 int32_t	main(int argc, char **argv)
 {
 	char	**map;
-	// t_game	game;
+	t_game	game;
 
 	if (argc < 2)
 		return (ft_putendl_fd("Map file .ber is missing", 2), EXIT_FAILURE);
@@ -39,12 +39,10 @@ int32_t	main(int argc, char **argv)
 	map = read_map(argv[1]);
 	if (validate_map(map) == false)
 		return (ft_matrix_delete(&map), EXIT_FAILURE);
-	ft_matrix_print(map);
-	printf("Is map valid? %d\n", validate_map(map));
-	// if (init_game(&game, argv[1]) < 0)
-	// 	return (EXIT_FAILURE);
+	if (init_game(&game, map) < 0)
+		return (EXIT_FAILURE);
 	// print_map(game.map);
-	// start_game(&game);
-	// cleanup(&game);
+	start_game(&game);
+	cleanup(&game);
 	return (EXIT_SUCCESS);
 }
