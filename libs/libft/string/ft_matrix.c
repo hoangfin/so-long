@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_matrix.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 01:26:30 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 12:00:32 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 21:08:39 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ char	**ft_matrix(size_t row_count, size_t col_count, int c)
 		matrix[i] = (char *)ft_calloc(col_count + 1, sizeof(char));
 		if (matrix[i] == NULL)
 		{
-			while (i >= 0)
+			while (i > 0)
 				free(matrix[i--]);
+			free(matrix[i]);
 			free(matrix);
 			return (NULL);
 		}
