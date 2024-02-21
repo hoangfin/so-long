@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 15:24:40 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 23:34:36 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ int32_t	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	// print_map(game.map);
 	start_game(&game);
-	cleanup(&game);
+	// cleanup(&game);
 	return (EXIT_SUCCESS);
 }

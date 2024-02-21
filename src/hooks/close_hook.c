@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 19:52:19 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/20 23:56:23 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 23:34:10 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	close_hook(void *param)
 
 	game = (t_game *)param;
 	ft_putendl_fd("You've clicked close icon at title bar", 1);
+	cleanup(game);
 	mlx_close_window(game->mlx);
 }

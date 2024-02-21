@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 16:10:44 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 22:58:36 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void	register_hooks(t_game *game)
 {
 	mlx_key_hook(game->mlx, key_hook, game);
 	mlx_close_hook(game->mlx, close_hook, game);
-	mlx_loop_hook(game->mlx, loop_hook, game);
 }
 
 int	init_game(t_game *game, char **map)
@@ -82,6 +81,5 @@ int	init_game(t_game *game, char **map)
 		return (-1);
 	}
 	register_hooks(game);
-	game->state = GAME_RUNNING;
 	return (0);
 }

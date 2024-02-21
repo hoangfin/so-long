@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:45:00 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 17:23:06 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 23:34:24 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,43 @@ static bool	is_valid_move(t_game *game, int32_t x, int32_t y)
 	return (true);
 }
 
+void	collect(t_game *game, int32_t player_x, int32_t player_y)
+{
+	uint32_t	i;
+
+	i = 0;
+	while (i < game->collectible->count)
+	{
+		if (
+			game->collectible->instances[i].x == player_x
+			&& game->collectible->instances[i].y == player_y
+			&& game->collectible->instances[i].enabled == true
+		)
+		{
+			game->collectible->instances[i].enabled = false;
+			game->collectible_count--;
+			break ;
+		}
+		i++;
+	}
+	if (game->collectible_count == 0)
+		game->exit->enabled = true;
+}
+
+static void	escape(t_game *game, int32_t player_x, int32_t player_y)
+{
+	if (
+		game->exit->instances[0].x == player_x
+		&& game->exit->instances[0].y == player_y
+		&& game->exit->enabled == true
+	)
+	{
+		ft_putendl_fd("YOU'VE WON", 1);
+		cleanup(game);
+		mlx_close_window(game->mlx);
+	}
+}
+
 void	move(t_game *game, int32_t dx, int32_t dy)
 {
 	const int32_t	x = game->player->instances[0].x + dx;
@@ -41,10 +78,5 @@ void	move(t_game *game, int32_t dx, int32_t dy)
 	game->move_count++;
 	printf("Number of movements: %u\n", game->move_count);
 	collect(game, x, y);
-	if (
-		game->exit->instances[0].x == x
-		&& game->exit->instances[0].y == y
-		&& game->exit->enabled == true
-	)
-		game->state = GAME_EXIT;
+	escape(game, x, y);
 }

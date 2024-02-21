@@ -28,10 +28,8 @@ SOURCES := $(SOURCE_DIR)/main.c \
 			$(SOURCE_DIR)/start_game.c \
 			$(SOURCE_DIR)/hooks/close_hook.c \
 			$(SOURCE_DIR)/hooks/key_hook.c \
-			$(SOURCE_DIR)/hooks/loop_hook.c \
 			$(SOURCE_DIR)/move.c \
 			$(SOURCE_DIR)/count_collectibles.c \
-			$(SOURCE_DIR)/collect.c \
 			$(SOURCE_DIR)/cleanup.c
 #			$(SOURCE_DIR)/exit_hook.c \
 
@@ -42,8 +40,8 @@ OBJECTS := $(SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
