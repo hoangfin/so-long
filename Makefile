@@ -32,7 +32,6 @@ SOURCES := $(SOURCE_DIR)/main.c \
 			$(SOURCE_DIR)/move.c \
 			$(SOURCE_DIR)/count_collectibles.c \
 			$(SOURCE_DIR)/collect.c \
-			$(SOURCE_DIR)/exit_game.c \
 			$(SOURCE_DIR)/cleanup.c
 #			$(SOURCE_DIR)/exit_hook.c \
 
