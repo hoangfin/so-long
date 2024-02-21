@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:45:00 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 13:45:15 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 17:23:06 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,7 @@ static bool	is_valid_move(t_game *game, int32_t x, int32_t y)
 	mlx_instance_t *const	walls = game->wall->instances;
 	uint32_t				i;
 
-	if (
-		x < 0
-		|| x >= (game->col_count * RENDER_PIXELS)
-		|| y < 0
-		|| y >= (game->row_count * RENDER_PIXELS)
-	)
+	if (x < 0 || x >= game->map_w || y < 0 || y >= game->map_h)
 		return (false);
 	i = 0;
 	while (i < game->wall->count)
