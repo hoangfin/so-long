@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:51:02 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/17 16:44:23 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 12:48:01 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static void	draw_images(t_game *game, int32_t row, int32_t col)
 {
-	if (game->map->grid[row][col] == '1')
+	if (game->map[row][col] == '1')
 		mlx_image_to_window(
 			game->mlx, game->wall, col * RENDER_PIXELS, row * RENDER_PIXELS \
 		);
-	if (game->map->grid[row][col] == 'P')
+	if (game->map[row][col] == 'P')
 		mlx_image_to_window(
 			game->mlx, game->player, col * RENDER_PIXELS, row * RENDER_PIXELS \
 		);
-	if (game->map->grid[row][col] == 'C')
+	if (game->map[row][col] == 'C')
 		mlx_image_to_window(
 			game->mlx, \
 			game->collectible, \
 			col * RENDER_PIXELS, \
 			row * RENDER_PIXELS \
 		);
-	if (game->map->grid[row][col] == 'E')
+	if (game->map[row][col] == 'E')
 		mlx_image_to_window(
 			game->mlx, game->exit, col * RENDER_PIXELS, row * RENDER_PIXELS \
 		);
@@ -41,10 +41,10 @@ static void	draw_floor(t_game *game)
 	int32_t	col;
 
 	row = 0;
-	while (row < game->map->rows)
+	while (row < game->row_count)
 	{
 		col = 0;
-		while (col < game->map->cols)
+		while (col < game->col_count)
 		{
 			mlx_image_to_window(
 				game->mlx,
@@ -65,10 +65,10 @@ static void	draw(t_game *game)
 
 	draw_floor(game);
 	row = 0;
-	while (row < game->map->rows)
+	while (row < game->row_count)
 	{
 		col = 0;
-		while (col < game->map->cols)
+		while (col < game->col_count)
 		{
 			draw_images(game, row, col);
 			col++;

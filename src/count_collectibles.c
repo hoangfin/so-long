@@ -6,26 +6,26 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 14:59:36 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/17 16:45:52 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 13:49:11 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-uint32_t	count_collectibles(t_map *map)
+uint32_t	count_collectibles(char **map)
 {
 	int32_t		row;
 	int32_t		col;
 	uint32_t	count;
 
-	row = 1;
+	row = 0;
 	count = 0;
-	while (row < map->rows - 1)
+	while (map[row] != NULL)
 	{
-		col = 1;
-		while (col < map->cols - 1)
+		col = 0;
+		while (map[row][col] != '\0')
 		{
-			if (map->grid[row][col] == 'C')
+			if (map[row][col] == 'C')
 				count++;
 			col++;
 		}

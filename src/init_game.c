@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/20 13:46:42 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 14:03:55 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	init_images(t_game *game)
 	game->exit = load_png(game->mlx, "assets/textures/mandatory/exit.png");
 	game->exit->enabled = false;
 	if (mlx_errno)
-		return (-1);
+		return (ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2), -1);
 	return (0);
 }
 
@@ -60,33 +60,28 @@ static void	register_hooks(t_game *game)
 	mlx_loop_hook(game->mlx, loop_hook, game);
 }
 
-int	init_game(t_game *game, const char *pathname)
+int	init_game(t_game *game, char **map)
 {
-	game->map = read_map(pathname);
-	if (game->map == NULL)
-		return (-1);
-	game->mlx = mlx_init(\
-		game->map->col_count * RENDER_PIXELS, \
-		game->map->row_count * RENDER_PIXELS, \
-		"so_long", \
-		true \
-	);
-	if (game->mlx == NULL)
-		return (-1);
-	// {
-	// 	delete_map(game->map);
-	// 	ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
-	// 	exit(EXIT_FAILURE);
-	// }
-	if (init_images(game) < 0)
-		return (-1);
-	// {
-	// 	cleanup(game);
-	// 	ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
-	// 	exit(EXIT_FAILURE);
-	// }
+	game->map = map;
+	game->row_count = ft_matrix_count_rows(map);
+	game->col_count = ft_strlen(map[0]);
+	game->map_w = game->col_count * RENDER_PIXELS;
+	game->map_h = game->row_count * RENDER_PIXELS;
 	game->collectible_count = count_collectibles(game->map);
 	game->move_count = 0;
+	game->mlx = mlx_init(game->map_w, game->map_h, "so_long", true);
+	if (game->mlx == NULL)
+	{
+		ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
+		return (ft_matrix_delete(&game->map), -1);
+	}
+	if (init_images(game) < 0)
+		return (-1);
+	{
+		ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
+		cleanup(game);
+		exit(EXIT_FAILURE);
+	}
 	register_hooks(game);
 	game->state = GAME_RUNNING;
 	return (0);

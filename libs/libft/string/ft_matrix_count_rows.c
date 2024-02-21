@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_map.c                                       :+:      :+:    :+:   */
+/*   ft_matrix_count_rows.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 21:33:11 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/20 15:36:46 by hoatran          ###   ########.fr       */
+/*   Created: 2024/02/21 12:17:45 by hoatran           #+#    #+#             */
+/*   Updated: 2024/02/21 12:19:51 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "libft_string.h"
 
-void	delete_map(char ***map)
+size_t	ft_matrix_count_rows(char **matrix)
 {
-	int	i;
+	size_t	i;
 
-	if (*map == NULL)
-		return ;
 	i = 0;
-	while ((*map)[i] != NULL)
-		free((*map)[i++]);
-	free(*map);
-	*map = NULL;
+	while (matrix[i] != NULL)
+		i++;
+	return (i);
 }

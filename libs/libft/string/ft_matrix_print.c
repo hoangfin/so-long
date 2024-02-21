@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   ft_matrix_print.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 22:19:24 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 13:46:35 by hoatran          ###   ########.fr       */
+/*   Created: 2024/02/21 11:53:09 by hoatran           #+#    #+#             */
+/*   Updated: 2024/02/21 11:56:31 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft_string.h"
 
-void	cleanup(t_game *game)
+void	ft_matrix_print(char **matrix)
 {
-	ft_matrix_delete(&game->map);
-	mlx_delete_image(game->mlx, game->space);
-	mlx_delete_image(game->mlx, game->wall);
-	mlx_delete_image(game->mlx, game->player);
-	mlx_delete_image(game->mlx, game->collectible);
-	mlx_delete_image(game->mlx, game->exit);
+	int	i;
+
+	i = 0;
+	while (matrix[i] != NULL)
+		ft_putendl_fd(matrix[i++], 1);
 }

@@ -6,28 +6,18 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 00:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/20 17:05:42 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 13:51:24 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static size_t	count_rows(char **map)
-{
-	size_t	i;
-
-	i = 0;
-	while (map[i] != NULL)
-		i++;
-	return (i);
-}
-
-bool	validate(char **map)
+bool	validate_map(char **map)
 {
 	size_t	row_count;
 	size_t	col_count;
 
-	row_count = count_rows(map);
+	row_count = ft_matrix_count_rows(map);
 	col_count = ft_strlen(map[0]);
 	if (is_rectangular(map) == false)
 		return (false);

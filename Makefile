@@ -17,7 +17,6 @@ CFLAGS := -g \
 			-I$(MLX42_DIR)/include
 
 SOURCES := $(SOURCE_DIR)/main.c \
-			$(SOURCE_DIR)/map/delete_map.c \
 			$(SOURCE_DIR)/map/has_valid_chars.c \
 			$(SOURCE_DIR)/map/has_valid_path.c \
 			$(SOURCE_DIR)/map/has_valid_pec.c \
@@ -44,8 +43,8 @@ OBJECTS := $(SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -58,6 +57,8 @@ $(LIBFT):
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	rm -f $(SOURCE_DIR)/*.o
+	rm -f $(SOURCE_DIR)/hooks/*.o
+	rm -f $(SOURCE_DIR)/map/*.o
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_grid.c                                          :+:      :+:    :+:   */
+/*   ft_matrix.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 01:26:30 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/20 17:41:12 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 12:00:32 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	**ft_matrix(size_t row_count, size_t col_count, int c)
 {
 	char	**matrix;
-	int		i;
+	size_t	i;
 
 	matrix = (char **)ft_calloc(row_count + 1, sizeof(char *));
 	if (matrix == NULL)

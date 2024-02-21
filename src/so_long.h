@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/20 17:06:20 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 13:59:52 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ typedef struct s_map
 typedef struct s_game
 {
 	mlx_t			*mlx;
-	t_grid			*map;
+	char			**map;
+	int32_t			row_count;
+	int32_t			col_count;
+	int32_t			map_w;
+	int32_t			map_h;
 	mlx_image_t		*space;
 	mlx_image_t		*wall;
 	mlx_image_t		*collectible;
@@ -57,14 +61,13 @@ typedef struct s_game
 
 char		**read_map(const char *pathname);
 bool		validate_map(char **map);
-void		delete_map(char ***map);
 bool		is_rectangular(char **map);
 bool		has_valid_chars(char **map);
 bool		has_valid_pec(char **map, int p, int e, int c);
 bool		has_valid_path(char **map, size_t row_count, size_t col_count);
 bool		is_enclosed(char **map, size_t row_count, size_t col_count);
 
-int			init_game(t_game *game, const char *pathname);
+int			init_game(t_game *game, char **map);
 void		start_game(t_game *game);
 void		cleanup(t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);
@@ -72,7 +75,7 @@ void		close_hook(void *param);
 void		loop_hook(void *param);
 // void		exit_hook(void *param);
 void		move(t_game *game, int32_t dx, int32_t dy);
-uint32_t	count_collectibles(t_map *map);
+uint32_t	count_collectibles(char **map);
 void		collect(t_game *game, int32_t x, int32_t y);
 void		exit_game(t_game *game, int32_t x, int32_t y);
 

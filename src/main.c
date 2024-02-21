@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:41:21 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/20 15:23:16 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 12:02:03 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,6 @@
 // 	printf("height: %d\n", map->height);
 // }
 
-void	print(char **map)
-{
-	while (*map != NULL)
-	{
-		printf("%s\n", *map);
-		map++;
-	}
-}
-
 int32_t	main(int argc, char **argv)
 {
 	char	**map;
@@ -47,8 +38,9 @@ int32_t	main(int argc, char **argv)
 		return (ft_putendl_fd("Map file must end with .ber", 2), EXIT_FAILURE);
 	map = read_map(argv[1]);
 	if (validate_map(map) == false)
-		return (delete_map(map), EXIT_FAILURE);
-	print(map);
+		return (ft_matrix_delete(&map), EXIT_FAILURE);
+	ft_matrix_print(map);
+	printf("Is map valid? %d\n", validate_map(map));
 	// if (init_game(&game, argv[1]) < 0)
 	// 	return (EXIT_FAILURE);
 	// print_map(game.map);
