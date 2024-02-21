@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collect.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 20:14:22 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/15 22:00:07 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 17:31:32 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	collect(t_game *game, int32_t x, int32_t y)
 		}
 		i++;
 	}
-	printf("collectible count = %d\n", game->collectible_count);
 	if (game->collectible_count == 0)
 		game->exit->enabled = true;
 }
