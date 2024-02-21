@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 14:03:55 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/21 16:10:44 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,10 @@ int	init_game(t_game *game, char **map)
 		return (ft_matrix_delete(&game->map), -1);
 	}
 	if (init_images(game) < 0)
-		return (-1);
 	{
-		ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
-		cleanup(game);
-		exit(EXIT_FAILURE);
+		ft_matrix_delete(&(game->map));
+		mlx_close_window(game->mlx);
+		return (-1);
 	}
 	register_hooks(game);
 	game->state = GAME_RUNNING;
