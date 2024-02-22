@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/22 16:27:35 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/22 21:12:23 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,19 @@ typedef	struct s_animation
 	mlx_image_t	*images;
 	uint32_t	duration;
 }	t_animation;
+
+typedef enum e_player_state
+{
+	PLAYER_IDLE,
+	PLAYER_RUNNING
+}	t_player_state;
+
+typedef struct s_player
+{
+	int32_t			x;
+	int32_t			y;
+	t_player_state	state;
+}	t_player;
 
 typedef struct s_game
 {

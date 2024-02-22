@@ -58,8 +58,8 @@ BONUS_OBJECTS := $(BONUS_SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -70,8 +70,8 @@ $(LIBFT):
 bonus: .bonus
 
 .bonus: $(LIBFT) $(BONUS_OBJECTS)
-#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 	touch .bonus
 
 clean:
