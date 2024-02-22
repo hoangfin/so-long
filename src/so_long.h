@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 23:52:47 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/22 11:52:24 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,6 @@
 # include <math.h>
 # include <fcntl.h>
 # include "MLX42/MLX42.h"
-
-typedef struct s_map
-{
-	char	**grid;
-	int32_t	rows;
-	int32_t	cols;
-	int32_t	width;
-	int32_t	height;
-}	t_map;
 
 typedef struct s_game
 {
