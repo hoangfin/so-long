@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   load_sprite_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:15:47 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/23 17:15:33 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/23 20:56:05 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../so_long_bonus.h"
 
 t_sprite	*load_sprite(mlx_t *mlx, const char *path, uint32_t slice_count)
 {
