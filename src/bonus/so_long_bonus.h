@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/23 17:41:45 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/23 20:33:40 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_game
 
 mlx_image_t	*load_png(mlx_t *mlx, const char *path);
 t_sprite	*load_sprite(mlx_t *mlx, const char *path, uint32_t slice_count);
+void		delete_sprite(mlx_t *mlx, t_sprite **sprite);
 
 char		**read_map(const char *pathname);
 bool		validate_map(char **map);
