@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/24 00:12:50 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/24 14:58:54 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ typedef enum s_game_state
 typedef struct s_sprite
 {
 	mlx_image_t	*image;
-	uint32_t	slice_w;
-	uint32_t	slice_h;
-	uint32_t	slice_row_count;
-	uint32_t	slice_col_count;
+	uint32_t	frame_w;
+	uint32_t	frame_h;
+	uint32_t	row_count;
+	uint32_t	col_count;
 }	t_sprite;
 
 typedef struct s_animation
@@ -83,7 +83,12 @@ typedef struct s_game
 }	t_game;
 
 mlx_image_t	*load_png(mlx_t *mlx, const char *path);
-t_sprite	*load_sprite(mlx_t *mlx, const char *path, uint32_t slice_count);
+t_sprite	*load_sprite(
+				mlx_t *mlx,
+				const char *pathname,
+				uint32_t row_count,
+				uint32_t col_count\
+			);
 void		delete_sprite(mlx_t *mlx, t_sprite **sprite);
 t_player	*load_player(mlx_t *mlx);
 void		delete_player(mlx_t *mlx, t_player **player);
@@ -110,7 +115,7 @@ void		put_pixel(
 				mlx_image_t *img,
 				mlx_image_t *sprite,
 				uint32_t x,
-				uint32_t y \
+				uint32_t y\
 			);
 
 #endif
