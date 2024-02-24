@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_collectibles_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:45:09 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/23 17:26:10 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/23 20:43:44 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	update_collectibles(void *param)
 	{
 		put_pixel(
 			game->collectible,
-			game->clt_sprite->image,
-			(current_slice % game->clt_sprite->slice_count) * 128,
+			game->collectible_sprite->image,
+			(current_slice % game->collectible_sprite->slice_count) * 128,
 			0 \
 		);
 		current_slice++;
 		accumulator -= 0.1;
 	}
 	// printf("accumulator time = %f\n", accumulator);
-	// put_pixel(game->collectible, game->clt_sprite,)
+	// put_pixel(game->collectible, game->collectible_sprite,)
 }

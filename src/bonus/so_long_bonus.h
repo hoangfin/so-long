@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/23 20:33:40 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/24 00:12:50 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ typedef struct s_sprite
 	mlx_image_t	*image;
 	uint32_t	slice_w;
 	uint32_t	slice_h;
-	uint32_t	slice_count;
+	uint32_t	slice_row_count;
+	uint32_t	slice_col_count;
 }	t_sprite;
 
 typedef struct s_animation
@@ -49,7 +50,7 @@ typedef struct s_animation
 typedef enum e_player_state
 {
 	PLAYER_IDLE,
-	PLAYER_RUNNING
+	PLAYER_MOVING
 }	t_player_state;
 
 typedef struct s_player
@@ -71,9 +72,11 @@ typedef struct s_game
 	mlx_image_t		*space;
 	mlx_image_t		*wall;
 	mlx_image_t		*collectible;
-	t_sprite		*clt_sprite;
+	t_sprite		*collectible_sprite;
+	t_sprite		*player_sprite;
+	t_sprite		*enemy_sprite;
 	mlx_image_t		*exit;
-	mlx_image_t		*player;
+	t_player		*player;
 	uint32_t		collectible_count;
 	uint32_t		move_count;
 	t_game_state	state;
@@ -82,6 +85,8 @@ typedef struct s_game
 mlx_image_t	*load_png(mlx_t *mlx, const char *path);
 t_sprite	*load_sprite(mlx_t *mlx, const char *path, uint32_t slice_count);
 void		delete_sprite(mlx_t *mlx, t_sprite **sprite);
+t_player	*load_player(mlx_t *mlx);
+void		delete_player(mlx_t *mlx, t_player **player);
 
 char		**read_map(const char *pathname);
 bool		validate_map(char **map);
