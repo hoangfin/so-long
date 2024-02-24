@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 22:58:36 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/24 17:19:44 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,13 @@ static mlx_image_t	*load_png(mlx_t *mlx, const char *path)
 
 static int	init_images(t_game *game)
 {
-	game->space = load_png(game->mlx, "assets/textures/mandatory/space.png");
-	game->wall = load_png(game->mlx, "assets/textures/mandatory/wall.png");
-	game->player = load_png(game->mlx, "assets/textures/mandatory/player.png");
+	game->space = load_png(game->mlx, "assets/textures/space.png");
+	game->wall = load_png(game->mlx, "assets/textures/wall.png");
+	game->player = load_png(game->mlx, "assets/textures/player.png");
 	game->collectible = load_png(\
-		game->mlx, \
-		"assets/textures/mandatory/collectible.png"\
+		game->mlx, "assets/textures/collectible.png"\
 	);
-	game->exit = load_png(game->mlx, "assets/textures/mandatory/exit.png");
+	game->exit = load_png(game->mlx, "assets/textures/exit.png");
 	game->exit->enabled = false;
 	if (mlx_errno)
 		return (ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2), -1);
