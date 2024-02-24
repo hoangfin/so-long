@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixel_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:36:30 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/23 17:33:08 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/24 20:06:34 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../so_long_bonus.h"
 
 static int	get_rgba(int r, int g, int b, int a)
 {

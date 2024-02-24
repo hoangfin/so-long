@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   load_png_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:19:09 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/23 15:52:21 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/24 20:06:26 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../so_long_bonus.h"
 
 mlx_image_t	*load_png(mlx_t *mlx, const char *path)
 {
