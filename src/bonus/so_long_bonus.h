@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/24 14:58:54 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/24 17:31:05 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void		loop_hook(void *param);
 void		close_hook(void *param);
 void		move(t_game *game, int32_t dx, int32_t dy);
 
-void		update_collectibles(void *param);
+void		update_collectibles(void *param, double elapsed_time);
 void		put_pixel(
 				mlx_image_t *img,
 				mlx_image_t *sprite,

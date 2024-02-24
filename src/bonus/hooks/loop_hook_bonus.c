@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:24:50 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/23 13:44:56 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/24 17:31:18 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 void	loop_hook(void *param)
 {
 	t_game *const	game = (t_game *)param;
+	double			elapsed_time;
 
+	elapsed_time = game->mlx->delta_time;
 	if (game->state == GAME_RUNNING)
 	{
 		// update_player_ui()
-		update_collectibles(game);
+		update_collectibles(game, elapsed_time);
 		// update_exit_ui()
 		// handle_collision()
 	}

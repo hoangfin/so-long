@@ -11,11 +11,11 @@ MLX42 := $(MLX42_DIR)/build/libmlx42.a
 
 CC := cc
 CFLAGS := -g \
-			-fsanitize=address \
 			-D RENDER_PIXELS=64 \
 			-Wall -Wextra -Werror \
 			-I$(LIBFT_DIR) \
 			-I$(MLX42_DIR)/include
+#			-fsanitize=address \
 
 SOURCES := $(SOURCE_DIR)/main.c \
 			$(SOURCE_DIR)/map/has_valid_chars.c \
@@ -35,8 +35,8 @@ SOURCES := $(SOURCE_DIR)/main.c \
 
 BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/load_png_bonus.c \
-					$(BONUS_SOURCE_DIR)/sprite/load_sprite_bonus.c \
-					$(BONUS_SOURCE_DIR)/sprite/delete_sprite_bonus.c \
+					$(BONUS_SOURCE_DIR)/util/load_sprite_bonus.c \
+					$(BONUS_SOURCE_DIR)/util/delete_sprite_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/has_valid_chars_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/has_valid_path_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/has_valid_pec_bonus.c \
@@ -63,8 +63,8 @@ BONUS_OBJECTS := $(BONUS_SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -75,8 +75,8 @@ $(LIBFT):
 bonus: .bonus
 
 .bonus: $(LIBFT) $(BONUS_OBJECTS)
-	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 	touch .bonus
 
 clean:
@@ -87,6 +87,7 @@ clean:
 	rm -f $(BONUS_SOURCE_DIR)/*.o
 	rm -f $(BONUS_SOURCE_DIR)/hooks/*.o
 	rm -f $(BONUS_SOURCE_DIR)/map/*.o
+	rm -f $(BONUS_SOURCE_DIR)/util/*.o
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
