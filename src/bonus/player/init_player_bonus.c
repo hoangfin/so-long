@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 20:55:34 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/25 18:48:31 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/25 22:34:52 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static t_animation	*new_animation(mlx_t *mlx)
 		return (NULL);
 	}
 	animation->current_frame = 0;
-	animation->duration = 0;
+	animation->elapsed_time_acc = 0;
+	return (animation);
 }
 
 int	init_player(t_game *game)
