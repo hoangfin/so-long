@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/24 17:31:05 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/25 11:20:02 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
+# define PADDING 16
+# define MENUBAR_HEIGHT 32
 
 # ifndef RENDER_PIXELS
 #  define RENDER_PIXELS 64
@@ -67,6 +69,8 @@ typedef struct s_game
 	char			**map;
 	int32_t			row_count;
 	int32_t			col_count;
+	int32_t			map_x;
+	int32_t			map_y;
 	int32_t			map_w;
 	int32_t			map_h;
 	mlx_image_t		*space;
