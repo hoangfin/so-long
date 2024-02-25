@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/25 11:20:02 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/25 18:50:13 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_sprite
 
 typedef struct s_animation
 {
+	mlx_image_t	*image;
+	int32_t		current_frame;
 	uint32_t	duration;
 }	t_animation;
 
@@ -59,7 +61,7 @@ typedef struct s_player
 {
 	int32_t			x;
 	int32_t			y;
-	t_animation		*move;
+	t_animation		*animation;
 	t_player_state	state;
 }	t_player;
 
@@ -94,7 +96,7 @@ t_sprite	*load_sprite(
 				uint32_t col_count\
 			);
 void		delete_sprite(mlx_t *mlx, t_sprite **sprite);
-t_player	*load_player(mlx_t *mlx);
+int			init_player(t_game *game);
 void		delete_player(mlx_t *mlx, t_player **player);
 
 char		**read_map(const char *pathname);
@@ -104,6 +106,7 @@ bool		has_valid_chars(char **map);
 bool		has_valid_pec(char **map, int p, int e, int c);
 bool		has_valid_path(char **map, size_t row_count, size_t col_count);
 bool		is_enclosed(char **map, size_t row_count, size_t col_count);
+void		get_player_pos(char **map, int *row, int *col);
 uint32_t	count_collectibles(char **map);
 
 int			init_game(t_game *game, char **map);
@@ -114,7 +117,8 @@ void		loop_hook(void *param);
 void		close_hook(void *param);
 void		move(t_game *game, int32_t dx, int32_t dy);
 
-void		update_collectibles(void *param, double elapsed_time);
+void		update_player(t_game *game, double elapsed_time);
+void		update_collectibles(t_game *game, double elapsed_time);
 void		put_pixel(
 				mlx_image_t *img,
 				mlx_image_t *sprite,

@@ -11,11 +11,11 @@ MLX42 := $(MLX42_DIR)/build/libmlx42.a
 
 CC := cc
 CFLAGS := -g \
+			-fsanitize=address \
 			-D RENDER_PIXELS=64 \
 			-Wall -Wextra -Werror \
 			-I$(LIBFT_DIR) \
 			-I$(MLX42_DIR)/include
-#			-fsanitize=address \
 
 SOURCES := $(SOURCE_DIR)/main.c \
 			$(SOURCE_DIR)/map/has_valid_chars.c \
@@ -34,9 +34,11 @@ SOURCES := $(SOURCE_DIR)/main.c \
 			$(SOURCE_DIR)/cleanup.c
 
 BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
-					$(BONUS_SOURCE_DIR)/load_png_bonus.c \
+					$(BONUS_SOURCE_DIR)/util/load_png_bonus.c \
 					$(BONUS_SOURCE_DIR)/util/load_sprite_bonus.c \
 					$(BONUS_SOURCE_DIR)/util/delete_sprite_bonus.c \
+					$(BONUS_SOURCE_DIR)/util/put_pixel_bonus.c \
+					$(BONUS_SOURCE_DIR)/map/get_player_pos_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/has_valid_chars_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/has_valid_path_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/has_valid_pec_bonus.c \
@@ -45,13 +47,14 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/read_map_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/validate_map_bonus.c \
 					$(BONUS_SOURCE_DIR)/init_game_bonus.c \
-					$(BONUS_SOURCE_DIR)/put_pixel_bonus.c \
 					$(BONUS_SOURCE_DIR)/start_game_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/loop_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/close_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/key_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/move_bonus.c \
 					$(BONUS_SOURCE_DIR)/count_collectibles_bonus.c \
+					$(BONUS_SOURCE_DIR)/player/init_player_bonus.c \
+					$(BONUS_SOURCE_DIR)/player/update_player_bonus.c \
 					$(BONUS_SOURCE_DIR)/update_collectibles_bonus.c \
 					$(BONUS_SOURCE_DIR)/cleanup_bonus.c
 
