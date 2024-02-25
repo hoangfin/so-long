@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_sprite_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:15:47 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/24 15:01:04 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/24 23:32:29 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,15 @@ t_sprite	*load_sprite(
 	}
 	sprite->image = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
+	if (sprite->image->width / col_count != RENDER_PIXELS)
+	{
+		if (mlx_resize_image(sprite->image, col_count * RENDER_PIXELS,
+			row_count * RENDER_PIXELS) == false)
+			return (ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2), NULL);
+	}
 	sprite->row_count = row_count;
 	sprite->col_count = col_count;
-	sprite->frame_w = sprite->image->width / col_count;
-	sprite->frame_h = sprite->image->height / row_count;
+	sprite->frame_w = RENDER_PIXELS;
+	sprite->frame_h = RENDER_PIXELS;
 	return (sprite);
 }
