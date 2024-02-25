@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:06:33 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/23 23:26:31 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/25 11:26:51 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ bool	has_valid_path(char **map, size_t row_count, size_t col_count)
 	if (visited == NULL)
 		return (perror("Error\n"), false);
 	get_player_position(map, &start_row, &start_col);
-	printf("row = %d, col = %d\n", start_row, start_col);
 	dfs(map, start_row, start_col, visited);
 	if (
 		count_collectibles(map) != count_collectibles(visited)
