@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/24 18:14:22 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/25 11:49:49 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	init_map(t_game *game, char **map)
 	game->map = map;
 	game->row_count = ft_matrix_count_rows(map);
 	game->col_count = ft_strlen(map[0]);
+	game->map_x = PADDING;
+	game->map_y = PADDING + MENUBAR_HEIGHT;
 	game->map_w = game->col_count * RENDER_PIXELS;
 	game->map_h = game->row_count * RENDER_PIXELS;
 }
@@ -25,16 +27,18 @@ static int	init_assets(t_game *game)
 {
 	game->space = load_png(game->mlx, "assets/textures/space.png");
 	game->wall = load_png(game->mlx, "assets/textures/wall.png");
+	/*
 	game->player_sprite = load_sprite(\
 		game->mlx, "assets/textures/sprites/player.png", 8, 6 \
 	);
 	game->enemy_sprite = load_sprite(\
 		game->mlx, "assets/textures/sprites/enemy.png", 5, 6 \
 	);
+	*/
 	game->collectible_sprite = load_sprite(\
 		game->mlx, "assets/textures/sprites/collectible.png", 1, 7 \
 	);
-	game->collectible = mlx_new_image(game->mlx, 128, 128);
+	game->collectible = mlx_new_image(game->mlx, RENDER_PIXELS, RENDER_PIXELS);
 	game->exit = load_png(game->mlx, "assets/textures/exit.png");
 	game->exit->enabled = false;
 	if (mlx_errno)
@@ -58,11 +62,13 @@ static int	init_assets(t_game *game)
 // 		return (perror("Failed to initialize player"), -1);
 // }
 
-
 int	init_game(t_game *game, char **map)
 {
 	init_map(game, map);
-	game->mlx = mlx_init(game->map_w, game->map_h, "so_long", true);
+	game->mlx = mlx_init(\
+		game->map_w + 2 * PADDING,
+		game->map_h + 2 * PADDING + MENUBAR_HEIGHT, "so_long", true \
+	);
 	if (game->mlx == NULL)
 	{
 		ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
