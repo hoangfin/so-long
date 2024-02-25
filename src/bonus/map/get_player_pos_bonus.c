@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_player_pos.c                                   :+:      :+:    :+:   */
+/*   get_player_pos_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:07:20 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/25 13:07:53 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/25 22:05:39 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	get_player_pos(char **map, int *row, int *col)
 {
