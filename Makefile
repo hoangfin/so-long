@@ -54,6 +54,7 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/move_bonus.c \
 					$(BONUS_SOURCE_DIR)/count_collectibles_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/init_player_bonus.c \
+					$(BONUS_SOURCE_DIR)/player/transition_player_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/animate_player_idle_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/update_player_bonus.c \
 					$(BONUS_SOURCE_DIR)/update_collectibles_bonus.c \

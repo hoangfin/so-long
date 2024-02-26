@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transit_player_state.c                             :+:      :+:    :+:   */
+/*   transition_player_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:27:26 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/26 15:37:43 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/26 20:50:15 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-t_player_state	transit_player_state(t_player_state current_state, keys_t key)
+t_player_state	transition_player(t_player_state current_state, keys_t key)
 {
 	if (current_state == PLAYER_IDLE)
 	{

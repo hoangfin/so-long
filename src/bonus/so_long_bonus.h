@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/26 15:34:09 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/26 20:52:33 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,53 +91,54 @@ typedef struct s_game
 	t_game_state	state;
 }	t_game;
 
-mlx_image_t	*load_png(mlx_t *mlx, const char *path);
-t_sprite	*load_sprite(
-				mlx_t *mlx,
-				const char *pathname,
-				uint32_t row_count,
-				uint32_t col_count\
-			);
-void		delete_sprite(mlx_t *mlx, t_sprite **sprite);
-int			init_player(t_game *game);
-void		delete_player(mlx_t *mlx, t_player **player);
+mlx_image_t		*load_png(mlx_t *mlx, const char *path);
+t_sprite		*load_sprite(
+					mlx_t *mlx,
+					const char *pathname,
+					uint32_t row_count,
+					uint32_t col_count\
+				);
+void			delete_sprite(mlx_t *mlx, t_sprite **sprite);
+int				init_player(t_game *game);
+void			delete_player(mlx_t *mlx, t_player **player);
 
-char		**read_map(const char *pathname);
-bool		validate_map(char **map);
-bool		is_rectangular(char **map);
-bool		has_valid_chars(char **map);
-bool		has_valid_pec(char **map, int p, int e, int c);
-bool		has_valid_path(char **map, size_t row_count, size_t col_count);
-bool		is_enclosed(char **map, size_t row_count, size_t col_count);
-void		get_player_pos(char **map, int *row, int *col);
-uint32_t	count_collectibles(char **map);
+char			**read_map(const char *pathname);
+bool			validate_map(char **map);
+bool			is_rectangular(char **map);
+bool			has_valid_chars(char **map);
+bool			has_valid_pec(char **map, int p, int e, int c);
+bool			has_valid_path(char **map, size_t row_count, size_t col_count);
+bool			is_enclosed(char **map, size_t row_count, size_t col_count);
+void			get_player_pos(char **map, int *row, int *col);
+uint32_t		count_collectibles(char **map);
 
-int			init_game(t_game *game, char **map);
-void		start_game(t_game *game);
-void		cleanup(t_game *game);
-void		key_hook(mlx_key_data_t keydata, void *param);
-void		loop_hook(void *param);
-void		close_hook(void *param);
-void		move(t_game *game, int32_t dx, int32_t dy);
+int				init_game(t_game *game, char **map);
+void			start_game(t_game *game);
+void			cleanup(t_game *game);
+void			key_hook(mlx_key_data_t keydata, void *param);
+void			loop_hook(void *param);
+void			close_hook(void *param);
+void			move(t_game *game, int32_t dx, int32_t dy);
 
-void		animate_player_idle(
-				t_game *game,
-				double elapsed_time,
-				double interval\
-			);
-void		animate_player_move_right(
-				t_game *game,
-				double elapsed_time,
-				double velocity,
-				double interval\
-			);
-void		update_player(t_game *game, double elapsed_time);
-void		update_collectibles(t_game *game, double elapsed_time);
-void		put_pixel(
-				mlx_image_t *img,
-				mlx_image_t *sprite,
-				uint32_t x,
-				uint32_t y\
-			);
+t_player_state	transition_player(t_player_state current_state, keys_t key);
+void			animate_player_idle(
+					t_game *game,
+					double elapsed_time,
+					double interval\
+				);
+void			animate_player_move_right(
+					t_game *game,
+					double elapsed_time,
+					double velocity,
+					double interval\
+				);
+void			update_player(t_game *game, double elapsed_time);
+void			update_collectibles(t_game *game, double elapsed_time);
+void			put_pixel(
+					mlx_image_t *img,
+					mlx_image_t *sprite,
+					uint32_t x,
+					uint32_t y\
+				);
 
 #endif
