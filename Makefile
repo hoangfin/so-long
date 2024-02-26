@@ -54,6 +54,7 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/move_bonus.c \
 					$(BONUS_SOURCE_DIR)/count_collectibles_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/init_player_bonus.c \
+					$(BONUS_SOURCE_DIR)/player/animate_player_idle_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/update_player_bonus.c \
 					$(BONUS_SOURCE_DIR)/update_collectibles_bonus.c \
 					$(BONUS_SOURCE_DIR)/cleanup_bonus.c
@@ -91,6 +92,7 @@ clean:
 	rm -f $(BONUS_SOURCE_DIR)/hooks/*.o
 	rm -f $(BONUS_SOURCE_DIR)/map/*.o
 	rm -f $(BONUS_SOURCE_DIR)/util/*.o
+	rm -f $(BONUS_SOURCE_DIR)/player/*.o
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean

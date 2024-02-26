@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_player_bonus.c                                :+:      :+:    :+:   */
+/*   update_player_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 20:55:34 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/23 20:59:50 by hoatran          ###   ########.fr       */
+/*   Created: 2024/02/25 13:22:59 by hoatran           #+#    #+#             */
+/*   Updated: 2024/02/25 22:17:26 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-t_player	*load_player(mlx_t *mlx)
+void	update_player(t_game *game, double elapsed_time)
 {
-	t_player	*player;
-
-	player = (t_player *)malloc(sizeof(t_player));
-	if (player == NULL)
-		return (NULL);
-	player->x = 
-	player->state = PLAYER_IDLE;
-	return (player);
+	if (game->player->state == PLAYER_IDLE)
+	{
+		animate_player_idle(game, elapsed_time, 0.083);
+	}
 }

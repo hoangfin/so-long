@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/25 18:50:13 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/25 21:59:55 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ typedef enum s_game_state
 	GAME_EXIT
 }	t_game_state;
 
+typedef enum e_player_state
+{
+	PLAYER_IDLE,
+	PLAYER_MOVING
+}	t_player_state;
+
 typedef struct s_sprite
 {
 	mlx_image_t	*image;
@@ -48,14 +54,8 @@ typedef struct s_animation
 {
 	mlx_image_t	*image;
 	int32_t		current_frame;
-	uint32_t	duration;
+	double		elapsed_time_acc;
 }	t_animation;
-
-typedef enum e_player_state
-{
-	PLAYER_IDLE,
-	PLAYER_MOVING
-}	t_player_state;
 
 typedef struct s_player
 {
@@ -78,9 +78,9 @@ typedef struct s_game
 	mlx_image_t		*space;
 	mlx_image_t		*wall;
 	mlx_image_t		*collectible;
-	t_sprite		*collectible_sprite;
 	t_sprite		*player_sprite;
 	t_sprite		*enemy_sprite;
+	t_sprite		*collectible_sprite;
 	mlx_image_t		*exit;
 	t_player		*player;
 	uint32_t		collectible_count;
@@ -117,6 +117,7 @@ void		loop_hook(void *param);
 void		close_hook(void *param);
 void		move(t_game *game, int32_t dx, int32_t dy);
 
+void		animate_player_idle(t_game *game, double elapsed_time, double interval);
 void		update_player(t_game *game, double elapsed_time);
 void		update_collectibles(t_game *game, double elapsed_time);
 void		put_pixel(

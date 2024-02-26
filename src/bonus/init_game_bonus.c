@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/25 11:49:49 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/25 18:49:14 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static int	init_assets(t_game *game)
 {
 	game->space = load_png(game->mlx, "assets/textures/space.png");
 	game->wall = load_png(game->mlx, "assets/textures/wall.png");
-	/*
 	game->player_sprite = load_sprite(\
 		game->mlx, "assets/textures/sprites/player.png", 8, 6 \
 	);
+	/*
 	game->enemy_sprite = load_sprite(\
 		game->mlx, "assets/textures/sprites/enemy.png", 5, 6 \
 	);
@@ -45,15 +45,6 @@ static int	init_assets(t_game *game)
 		return (ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2), -1);
 	return (0);
 }
-
-// static int	init_player(t_game *game)
-// {
-// 	game->player = (t_player *)malloc(sizeof(t_player));
-// 	if (game->player == NULL)
-// 		return (perror("Failed to initialize player"), -1);
-// 	player->x =
-// 	player->state = PLAYER_IDLE;
-// }
 
 // static int	init_enemies(t_game *game)
 // {
@@ -76,8 +67,8 @@ int	init_game(t_game *game, char **map)
 	}
 	if (init_assets(game) < 0)
 		return (cleanup(game), -1);
-	// if (init_player(game) < 0)
-	// 	return (cleanup(game), -1);
+	if (init_player(game) < 0)
+		return (cleanup(game), -1);
 	// if (init_enemies(game) < 0)
 	// 	return (cleanup(game), -1);
 	mlx_key_hook(game->mlx, key_hook, game);
