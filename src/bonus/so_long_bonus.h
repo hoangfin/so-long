@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/25 21:59:55 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/26 15:34:09 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ typedef enum s_game_state
 typedef enum e_player_state
 {
 	PLAYER_IDLE,
-	PLAYER_MOVING
+	PLAYER_MOVE_UP,
+	PLAYER_MOVE_RIGHT,
+	PLAYER_MOVE_DOWN,
+	PLAYER_MOVE_LEFT,
 }	t_player_state;
 
 typedef struct s_sprite
@@ -117,7 +120,17 @@ void		loop_hook(void *param);
 void		close_hook(void *param);
 void		move(t_game *game, int32_t dx, int32_t dy);
 
-void		animate_player_idle(t_game *game, double elapsed_time, double interval);
+void		animate_player_idle(
+				t_game *game,
+				double elapsed_time,
+				double interval\
+			);
+void		animate_player_move_right(
+				t_game *game,
+				double elapsed_time,
+				double velocity,
+				double interval\
+			);
 void		update_player(t_game *game, double elapsed_time);
 void		update_collectibles(t_game *game, double elapsed_time);
 void		put_pixel(

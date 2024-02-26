@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:24:50 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/25 22:13:43 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/26 17:57:49 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	loop_hook(void *param)
 	elapsed_time = game->mlx->delta_time;
 	if (game->state == GAME_RUNNING)
 	{
-		update_player(game, elapsed_time);
+		update_player(game->player, elapsed_time);
 		update_collectibles(game, elapsed_time);
 		// update_exit_ui()
 		// handle_collision()
