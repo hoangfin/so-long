@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 20:55:34 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/25 22:34:52 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/26 23:29:46 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	init_player(t_game *game)
 	get_player_pos(game->map, &player_x, &player_y);
 	game->player->x = game->map_x + player_x * RENDER_PIXELS;
 	game->player->y = game->map_y + player_y * RENDER_PIXELS;
+	game->player->velocity = 100.00;
+	game->player->distance_acc = 0;
 	game->player->state = PLAYER_IDLE;
 	return (0);
 }

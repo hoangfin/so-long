@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/26 20:52:33 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/26 23:28:59 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct s_player
 {
 	int32_t			x;
 	int32_t			y;
+	double			velocity;
+	int32_t			distance_acc;
 	t_animation		*animation;
 	t_player_state	state;
 }	t_player;

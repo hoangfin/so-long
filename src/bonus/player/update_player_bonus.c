@@ -3,30 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   update_player_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:22:59 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/26 17:57:24 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/26 23:39:43 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-void	update_player(
-			t_player *player,
-			double elapsed_time,
-			int32_t x,
-			int32_t y
-)
+void	update_player(t_player *player, double elapsed_time)
 {
-	const double	velocity = 100;
-	const int32_t	distance = (int32_t)(velocity * elapsed_time);
+	int32_t	distance;
 
-	if (player->x == end || player->y == end)
+	if (player->distance_acc == RENDER_PIXELS)
 	{
+		player->distance_acc = 0;
 		player->state = PLAYER_IDLE;
 		return ;
 	}
+	distance = (int32_t)(player->velocity * elapsed_time);
+	if (player->distance_acc + distance > RENDER_PIXELS)
+		distance = RENDER_PIXELS - player->distance_acc;
 	if (player->state == PLAYER_MOVE_UP)
 		player->y -= distance;
 		// animate_player_idle(game, elapsed_time, 0.083);
@@ -36,5 +34,6 @@ void	update_player(
 		player->y += distance;
 	else if (player->state == PLAYER_MOVE_LEFT)
 		player->x -= distance;
+	player->distance_acc += distance;
 		// animate_player_move_right(game, elapsed_time, 20, 0.083);
 }
