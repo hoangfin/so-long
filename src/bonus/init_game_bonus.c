@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/25 18:49:14 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/27 12:59:17 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ static int	init_assets(t_game *game)
 	return (0);
 }
 
+static int	init_player(t_game *game)
+{
+	int32_t	player_x;
+	int32_t	player_y;
+
+	game->player = new_character(game->mlx);
+	if (game->player == NULL)
+		return (-1);
+	get_player_pos(game->map, &player_x, &player_y);
+	game->player->x = game->map_x + player_x * RENDER_PIXELS;
+	game->player->y = game->map_y + player_y * RENDER_PIXELS;
+	return (0);
+}
+
 // static int	init_enemies(t_game *game)
 // {
 // 	game->player = (t_player *)malloc(sizeof(t_player));
@@ -57,7 +71,7 @@ int	init_game(t_game *game, char **map)
 {
 	init_map(game, map);
 	game->mlx = mlx_init(\
-		game->map_w + 2 * PADDING,
+		game->map_w + 2 * PADDING, \
 		game->map_h + 2 * PADDING + MENUBAR_HEIGHT, "so_long", true \
 	);
 	if (game->mlx == NULL)
