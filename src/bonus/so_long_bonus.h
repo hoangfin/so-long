@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/26 23:28:59 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/27 12:37:08 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,17 @@ typedef struct s_sprite
 	uint32_t	col_count;
 }	t_sprite;
 
-typedef struct s_animation
+typedef struct s_character
 {
-	mlx_image_t	*image;
-	int32_t		current_frame;
-	double		elapsed_time_acc;
-}	t_animation;
-
-typedef struct s_player
-{
+	mlx_image_t		*image;
 	int32_t			x;
 	int32_t			y;
 	double			velocity;
 	int32_t			distance_acc;
-	t_animation		*animation;
+	double			elapsed_time_acc;
+	int32_t			current_frame;
 	t_player_state	state;
-}	t_player;
+}	t_character;
 
 typedef struct s_game
 {
@@ -87,7 +82,7 @@ typedef struct s_game
 	t_sprite		*enemy_sprite;
 	t_sprite		*collectible_sprite;
 	mlx_image_t		*exit;
-	t_player		*player;
+	t_character		*player;
 	uint32_t		collectible_count;
 	uint32_t		move_count;
 	t_game_state	state;
@@ -101,8 +96,6 @@ t_sprite		*load_sprite(
 					uint32_t col_count\
 				);
 void			delete_sprite(mlx_t *mlx, t_sprite **sprite);
-int				init_player(t_game *game);
-void			delete_player(mlx_t *mlx, t_player **player);
 
 char			**read_map(const char *pathname);
 bool			validate_map(char **map);
@@ -113,6 +106,9 @@ bool			has_valid_path(char **map, size_t row_count, size_t col_count);
 bool			is_enclosed(char **map, size_t row_count, size_t col_count);
 void			get_player_pos(char **map, int *row, int *col);
 uint32_t		count_collectibles(char **map);
+
+t_character		*new_character(mlx_t *mlx);
+void			delete_character(mlx_t *mlx, t_character **character);
 
 int				init_game(t_game *game, char **map);
 void			start_game(t_game *game);

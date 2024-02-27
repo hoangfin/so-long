@@ -48,6 +48,8 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/validate_map_bonus.c \
 					$(BONUS_SOURCE_DIR)/init_game_bonus.c \
 					$(BONUS_SOURCE_DIR)/start_game_bonus.c \
+					$(BONUS_SOURCE_DIR)/new_character_bonus.c \
+					$(BONUS_SOURCE_DIR)/delete_character_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/loop_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/close_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/key_hook_bonus.c \
