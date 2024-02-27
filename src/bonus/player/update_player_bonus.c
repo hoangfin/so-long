@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_player_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:22:59 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/27 14:33:37 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/27 23:45:08 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	update_player(t_character *player, double elapsed_time)
 
 	if (player->distance_acc == RENDER_PIXELS)
 	{
-		player->distance_acc = 0;
-		player->state = PLAYER_IDLE;
+		set_player_state(player, PLAYER_IDLE);
 		return ;
 	}
 	distance = (int32_t)(player->velocity * elapsed_time);

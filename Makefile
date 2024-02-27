@@ -50,7 +50,6 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/start_game_bonus.c \
 					$(BONUS_SOURCE_DIR)/new_character_bonus.c \
 					$(BONUS_SOURCE_DIR)/delete_character_bonus.c \
-					$(BONUS_SOURCE_DIR)/reset_character_bonus.c \
 					$(BONUS_SOURCE_DIR)/is_movable_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/loop_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/close_hook_bonus.c \
@@ -60,6 +59,7 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/animate_player_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/update_player_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/update_player_ui_bonus.c \
+					$(BONUS_SOURCE_DIR)/player/set_player_state_bonus.c \
 					$(BONUS_SOURCE_DIR)/update_collectibles_bonus.c \
 					$(BONUS_SOURCE_DIR)/cleanup_bonus.c
 

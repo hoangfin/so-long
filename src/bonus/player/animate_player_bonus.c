@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animate_player_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 18:05:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/27 18:00:58 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/27 22:12:43 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ static void	move_right(t_character *player, t_sprite *sprite)
 		put_pixel(
 			player->image,
 			sprite->image,
-			++(player->current_frame) % sprite->col_count * sprite->frame_w,
+			player->current_frame % sprite->col_count * sprite->frame_w,
 			sprite->frame_h \
 		);
+		(player->current_frame)++;
 		player->image->instances[0].x = player->x;
 	}
 }
