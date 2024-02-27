@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/27 12:37:08 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/27 17:14:53 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,21 +116,13 @@ void			cleanup(t_game *game);
 void			key_hook(mlx_key_data_t keydata, void *param);
 void			loop_hook(void *param);
 void			close_hook(void *param);
+bool			is_movable(t_game *game, int32_t x, int32_t y);
 void			move(t_game *game, int32_t dx, int32_t dy);
 
-t_player_state	transition_player(t_player_state current_state, keys_t key);
-void			animate_player_idle(
-					t_game *game,
-					double elapsed_time,
-					double interval\
-				);
-void			animate_player_move_right(
-					t_game *game,
-					double elapsed_time,
-					double velocity,
-					double interval\
-				);
-void			update_player(t_game *game, double elapsed_time);
+t_player_state	transition_player(t_game *game, keys_t key);
+void			update_player(t_character *player, double elapsed_time);
+void			update_player_ui(t_character *player, t_sprite *player_sprite);
+void			animate_player(t_character *player, t_sprite *sprite);
 void			update_collectibles(t_game *game, double elapsed_time);
 void			put_pixel(
 					mlx_image_t *img,

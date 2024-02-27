@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:24:50 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/26 17:57:49 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/27 15:09:51 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	loop_hook(void *param)
 	if (game->state == GAME_RUNNING)
 	{
 		update_player(game->player, elapsed_time);
+		update_player_ui(game->player, game->player_sprite);
 		update_collectibles(game, elapsed_time);
 		// update_exit_ui()
 		// handle_collision()
