@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/27 17:14:53 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/27 22:55:54 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ t_player_state	transition_player(t_game *game, keys_t key);
 void			update_player(t_character *player, double elapsed_time);
 void			update_player_ui(t_character *player, t_sprite *player_sprite);
 void			animate_player(t_character *player, t_sprite *sprite);
+void			reset_character(t_character *character);
 void			update_collectibles(t_game *game, double elapsed_time);
 void			put_pixel(
 					mlx_image_t *img,

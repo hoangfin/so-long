@@ -11,11 +11,11 @@ MLX42 := $(MLX42_DIR)/build/libmlx42.a
 
 CC := cc
 CFLAGS := -g \
+			-fsanitize=address \
 			-D RENDER_PIXELS=64 \
 			-Wall -Wextra -Werror \
 			-I$(LIBFT_DIR) \
 			-I$(MLX42_DIR)/include
-#			-fsanitize=address \
 
 SOURCES := $(SOURCE_DIR)/main.c \
 			$(SOURCE_DIR)/map/has_valid_chars.c \
@@ -50,6 +50,7 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/start_game_bonus.c \
 					$(BONUS_SOURCE_DIR)/new_character_bonus.c \
 					$(BONUS_SOURCE_DIR)/delete_character_bonus.c \
+					$(BONUS_SOURCE_DIR)/reset_character_bonus.c \
 					$(BONUS_SOURCE_DIR)/is_movable_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/loop_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/close_hook_bonus.c \
@@ -70,8 +71,8 @@ BONUS_OBJECTS := $(BONUS_SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -82,8 +83,8 @@ $(LIBFT):
 bonus: .bonus
 
 .bonus: $(LIBFT) $(BONUS_OBJECTS)
-#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 	touch .bonus
 
 clean:
