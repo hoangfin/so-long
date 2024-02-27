@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:20:48 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/27 12:35:09 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/27 17:27:57 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ t_character	*new_character(mlx_t *mlx)
 	character->elapsed_time_acc = 0;
 	character->current_frame = 0;
 	character->state = PLAYER_IDLE;
-	return (0);
+	return (character);
 }
