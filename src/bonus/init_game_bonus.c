@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/27 12:59:17 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/28 16:35:47 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	init_player(t_game *game)
 	game->player = new_character(game->mlx);
 	if (game->player == NULL)
 		return (-1);
-	get_player_pos(game->map, &player_x, &player_y);
+	get_player_pos(game->map, &player_y, &player_x);
 	game->player->x = game->map_x + player_x * RENDER_PIXELS;
 	game->player->y = game->map_y + player_y * RENDER_PIXELS;
 	return (0);

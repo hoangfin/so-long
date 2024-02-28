@@ -56,7 +56,8 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/key_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/count_collectibles_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/transition_player_bonus.c \
-					$(BONUS_SOURCE_DIR)/player/animate_player_bonus.c \
+					$(BONUS_SOURCE_DIR)/player/render_player_idle_bonus.c \
+					$(BONUS_SOURCE_DIR)/player/render_player_move_right_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/update_player_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/update_player_ui_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/set_player_state_bonus.c \
@@ -71,8 +72,8 @@ BONUS_OBJECTS := $(BONUS_SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -83,8 +84,8 @@ $(LIBFT):
 bonus: .bonus
 
 .bonus: $(LIBFT) $(BONUS_OBJECTS)
-	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 	touch .bonus
 
 clean:

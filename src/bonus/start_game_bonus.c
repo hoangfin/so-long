@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:51:02 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/27 16:09:14 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/28 16:12:44 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	draw_images(t_game *game, int32_t row, int32_t col)
 	if (game->map[row][col] == '1')
 		mlx_image_to_window(game->mlx, game->wall, x, y);
 	if (game->map[row][col] == 'P')
-		mlx_image_to_window(game->mlx, game->player->image, x, y);
+		mlx_image_to_window(game->mlx, game->player->image, game->player->x, game->player->y);
 	if (game->map[row][col] == 'C')
 		mlx_image_to_window(game->mlx, game->collectible, x, y);
 	if (game->map[row][col] == 'E')

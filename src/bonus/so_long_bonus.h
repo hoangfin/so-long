@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/27 23:44:02 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:30:40 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_character
 	int32_t				x;
 	int32_t				y;
 	double				velocity;
+	int32_t				distance_moved;
 	int32_t				distance_acc;
 	double				elapsed_time_acc;
 	int32_t				current_frame;
@@ -121,8 +122,9 @@ void		move(t_game *game, int32_t dx, int32_t dy);
 void		transition_player(t_game *game, keys_t key);
 void		update_player(t_character *player, double elapsed_time);
 void		update_player_ui(t_character *player, t_sprite *player_sprite);
-void		animate_player(t_character *player, t_sprite *sprite);
-void		set_player_state(t_character *player, t_character_state player_state);
+void		render_player_idle(t_character *player, t_sprite *sprite);
+void		render_player_move_right(t_character *player, t_sprite *sprite);
+void		set_player_state(t_character *player, t_character_state state);
 void		update_collectibles(t_game *game, double elapsed_time);
 void		put_pixel(
 				mlx_image_t *img,
