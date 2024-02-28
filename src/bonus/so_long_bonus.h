@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/28 15:30:40 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/28 22:58:54 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,14 +117,14 @@ void		key_hook(mlx_key_data_t keydata, void *param);
 void		loop_hook(void *param);
 void		close_hook(void *param);
 bool		is_movable(t_game *game, int32_t x, int32_t y);
-void		move(t_game *game, int32_t dx, int32_t dy);
 
 void		transition_player(t_game *game, keys_t key);
 void		update_player(t_character *player, double elapsed_time);
 void		update_player_ui(t_character *player, t_sprite *player_sprite);
-void		render_player_idle(t_character *player, t_sprite *sprite);
-void		render_player_move_right(t_character *player, t_sprite *sprite);
-void		set_player_state(t_character *player, t_character_state state);
+void		animate_idle(t_character *ch, t_sprite *spr, uint32_t spr_row);
+void		animate_hor_move(t_character *ch, t_sprite *spr, uint32_t spr_row);
+void		animate_ver_move(t_character *ch, t_sprite *spr, uint32_t spr_row);
+void		set_character_state(t_character *ch, t_character_state state);
 void		update_collectibles(t_game *game, double elapsed_time);
 void		put_pixel(
 				mlx_image_t *img,

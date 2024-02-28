@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_player_move_right_bonus.c                   :+:      :+:    :+:   */
+/*   animate_hor_move_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:19:39 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/28 17:07:08 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/28 23:06:04 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long_bonus.h"
+#include "so_long_bonus.h"
 
-void	render_player_move_right(t_character *player, t_sprite *sprite)
+void	animate_hor_move(t_character *ch, t_sprite *spr, uint32_t spr_row)
 {
-	if (player->distance_acc >= RENDER_PIXELS / 12)
+	if (ch->distance_acc >= RENDER_PIXELS / 12)
 	{
 		put_pixel(
-			player->image,
-			sprite->image,
-			player->current_frame % sprite->col_count * sprite->frame_w,
-			sprite->frame_h \
+			ch->image,
+			spr->image,
+			ch->current_frame % spr->col_count * spr->frame_w,
+			spr_row * spr->frame_h\
 		);
-		(player->current_frame)++;
-		player->image->instances[0].x = player->x;
-		player->distance_acc -= RENDER_PIXELS / 12;
+		(ch->current_frame)++;
+		ch->image->instances[0].x = ch->x;
+		ch->distance_acc -= RENDER_PIXELS / 12;
 	}
 }
