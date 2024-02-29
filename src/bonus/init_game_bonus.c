@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/28 16:35:47 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/29 14:23:03 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	init_assets(t_game *game)
 	game->space = load_png(game->mlx, "assets/textures/space.png");
 	game->wall = load_png(game->mlx, "assets/textures/wall.png");
 	game->player_sprite = load_sprite(\
-		game->mlx, "assets/textures/sprites/player.png", 8, 6 \
+		game->mlx, "assets/textures/sprites/player.png", 6, 6 \
 	);
 	/*
 	game->enemy_sprite = load_sprite(\
