@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/29 14:07:09 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/29 23:44:49 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ typedef enum e_character_state
 	PLAYER_MOVE_RIGHT,
 	PLAYER_MOVE_DOWN,
 	PLAYER_MOVE_LEFT,
+	ENEMY_IDLE_LEFT,
+	ENEMY_IDLE_RIGHT,
+	ENEMY_MOVE_UP,
+	ENEMY_MOVE_RIGHT,
+	ENEMY_MOVE_DOWN,
+	ENEMY_MOVE_LEFT,
 }	t_character_state;
 
 typedef struct s_sprite
@@ -85,6 +91,7 @@ typedef struct s_game
 	t_sprite		*collectible_sprite;
 	mlx_image_t		*exit;
 	t_character		*player;
+	t_character		*enemies;
 	uint32_t		collectible_count;
 	uint32_t		move_count;
 	t_game_state	state;
@@ -120,8 +127,11 @@ void		close_hook(void *param);
 bool		is_movable(t_game *game, int32_t x, int32_t y);
 
 void		transition_player(t_game *game, keys_t key);
+void		transition_enemies(t_character *enemies, t_game *game);
 void		update_player(t_character *player, double elapsed_time);
 void		update_player_ui(t_character *player, t_sprite *player_sprite);
+void		update_enemies(t_character *enemies, double elapsed_time);
+void		update_enemies_ui(t_character *enemies, t_sprite *enemy_sprite);
 void		animate_idle(t_character *ch, t_sprite *spr, uint32_t spr_row);
 void		animate_hor_move(t_character *ch, t_sprite *spr, uint32_t spr_row);
 void		animate_ver_move(t_character *ch, t_sprite *spr, uint32_t spr_row);

@@ -67,7 +67,11 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					\
 					$(BONUS_SOURCE_DIR)/player/transition_player_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/update_player_bonus.c \
-					$(BONUS_SOURCE_DIR)/player/update_player_ui_bonus.c
+					$(BONUS_SOURCE_DIR)/player/update_player_ui_bonus.c \
+					\
+					$(BONUS_SOURCE_DIR)/enemy/transition_enemies_bonus.c \
+					$(BONUS_SOURCE_DIR)/enemy/update_enemies_bonus.c \
+					$(BONUS_SOURCE_DIR)/enemy/update_enemies_ui_bonus.c
 
 OBJECTS := $(SOURCES:.c=.o)
 BONUS_OBJECTS := $(BONUS_SOURCES:.c=.o)
