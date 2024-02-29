@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animate_ver_move_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:19:39 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/28 23:07:24 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/02/29 11:52:49 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	animate_ver_move(t_character *ch, t_sprite *spr, uint32_t spr_row)
 			ch->image,
 			spr->image,
 			ch->current_frame % spr->col_count * spr->frame_w,
-			spr_row * spr->frame_h\
+			spr_row * spr->frame_h \
 		);
 		(ch->current_frame)++;
 		ch->image->instances[0].y = ch->y;
