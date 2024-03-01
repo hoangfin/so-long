@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_enemies_ui_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:44:22 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/01 17:22:23 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/01 21:50:51 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,13 @@ void	update_enemy_ui(t_character *enemy, t_sprite *enemy_sprite)
 
 void	update_enemies_ui(t_character **enemies, t_sprite *enemy_sprite)
 {
+	uint32_t	count;
+
+	count = 0;
 	while (*enemies != NULL)
 	{
 		update_enemy_ui(*enemies, enemy_sprite);
+		count++;
 		enemies++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/01 16:22:49 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/01 21:51:40 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,15 @@ static int	init_characters(t_game *game)
 				game->player->y = game->map_y + row * RENDER_PIXELS;
 			}
 			if (game->map[row][col] == 'X')
-				game->enemies[i++] = new_character(\
+			{
+				game->enemies[i] = new_character(\
 					game->mlx, \
 					game->map_x + col * RENDER_PIXELS, \
 					game->map_y + row * RENDER_PIXELS, \
 					ENEMY_IDLE_RIGHT \
 				);
+				i++;
+			}
 			col++;
 		}
 		row++;
