@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_enemies_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:22:59 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/29 23:13:44 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/01 17:39:56 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,11 @@ static void	update_enemy(t_character *enemy, double elapsed_time)
 	enemy->elapsed_time_acc += elapsed_time;
 }
 
-void	update_enemies(t_character *enemies, double elapsed_time)
+void	update_enemies(t_character **enemies, double elapsed_time)
 {
-	t_character *enemy;
-
-	enemy = enemies;
-	while (enemy != NULL)
+	while (*enemies != NULL)
 	{
-		update_enemy(enemy, elapsed_time);
-		enemy++;
+		update_enemy(*enemies, elapsed_time);
+		enemies++;
 	}
 }

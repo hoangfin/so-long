@@ -47,6 +47,7 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/is_rectangular_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/read_map_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/validate_map_bonus.c \
+					$(BONUS_SOURCE_DIR)/map/count_enemies_bonus.c \
 					\
 					$(BONUS_SOURCE_DIR)/animate_hor_move_bonus.c \
 					$(BONUS_SOURCE_DIR)/animate_idle_bonus.c \
@@ -107,6 +108,7 @@ clean:
 	rm -f $(BONUS_SOURCE_DIR)/map/*.o
 	rm -f $(BONUS_SOURCE_DIR)/util/*.o
 	rm -f $(BONUS_SOURCE_DIR)/player/*.o
+	rm -f $(BONUS_SOURCE_DIR)/enemy/*.o
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean

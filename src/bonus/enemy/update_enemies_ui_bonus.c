@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_enemies_ui_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:44:22 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/29 23:43:22 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/01 17:22:23 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,11 @@ void	update_enemy_ui(t_character *enemy, t_sprite *enemy_sprite)
 		animate_ver_move(enemy, enemy_sprite, 5);
 }
 
-void	update_enemies_ui(t_character *enemies, t_sprite *enemy_sprite)
+void	update_enemies_ui(t_character **enemies, t_sprite *enemy_sprite)
 {
-	t_character *enemy;
-
-	enemy = enemies;
-	while (enemy != NULL)
+	while (*enemies != NULL)
 	{
-		update_enemy_ui(enemy, enemy_sprite);
-		enemy++;
+		update_enemy_ui(*enemies, enemy_sprite);
+		enemies++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/29 23:44:49 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/01 16:24:13 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct s_game
 	t_sprite		*collectible_sprite;
 	mlx_image_t		*exit;
 	t_character		*player;
-	t_character		*enemies;
+	t_character		**enemies;
 	uint32_t		collectible_count;
 	uint32_t		move_count;
 	t_game_state	state;
@@ -114,9 +114,15 @@ bool		has_valid_pec(char **map, int p, int e, int c);
 bool		has_valid_path(char **map, size_t row_count, size_t col_count);
 bool		is_enclosed(char **map, size_t row_count, size_t col_count);
 void		get_player_pos(char **map, int *row, int *col);
+uint32_t	count_enemies(char **map);
 uint32_t	count_collectibles(char **map);
 
-t_character	*new_character(mlx_t *mlx);
+t_character	*new_character(
+				mlx_t *mlx,
+				int32_t x,
+				int32_t y,
+				t_character_state state \
+			);
 void		delete_character(mlx_t *mlx, t_character **character);
 int			init_game(t_game *game, char **map);
 void		start_game(t_game *game);
@@ -127,11 +133,11 @@ void		close_hook(void *param);
 bool		is_movable(t_game *game, int32_t x, int32_t y);
 
 void		transition_player(t_game *game, keys_t key);
-void		transition_enemies(t_character *enemies, t_game *game);
+void		transition_enemies(t_character **enemies, t_game *game);
 void		update_player(t_character *player, double elapsed_time);
 void		update_player_ui(t_character *player, t_sprite *player_sprite);
-void		update_enemies(t_character *enemies, double elapsed_time);
-void		update_enemies_ui(t_character *enemies, t_sprite *enemy_sprite);
+void		update_enemies(t_character **enemies, double elapsed_time);
+void		update_enemies_ui(t_character **enemies, t_sprite *enemy_sprite);
 void		animate_idle(t_character *ch, t_sprite *spr, uint32_t spr_row);
 void		animate_hor_move(t_character *ch, t_sprite *spr, uint32_t spr_row);
 void		animate_ver_move(t_character *ch, t_sprite *spr, uint32_t spr_row);

@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/29 15:46:43 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/01 16:22:49 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,43 @@ static int	init_assets(t_game *game)
 	return (0);
 }
 
-static int	init_player(t_game *game)
+static int	init_characters(t_game *game)
 {
-	int32_t	player_x;
-	int32_t	player_y;
+	int32_t	row;
+	int32_t	col;
+	int32_t	i;
 
-	game->player = new_character(game->mlx);
+	game->player = new_character(game->mlx, 0, 0, PLAYER_IDLE_RIGHT);
 	if (game->player == NULL)
 		return (-1);
-	get_player_pos(game->map, &player_y, &player_x);
-	game->player->x = game->map_x + player_x * RENDER_PIXELS;
-	game->player->y = game->map_y + player_y * RENDER_PIXELS;
+	game->enemies = (t_character **)ft_calloc(count_enemies(game->map) + 1, sizeof(t_character *));
+	if (game->enemies == NULL)
+		return (-1);
+	row = 0;
+	i = 0;
+	while (game->map[row] != NULL)
+	{
+		col = 0;
+		while (game->map[row][col] != '\0')
+		{
+			if (game->map[row][col] == 'P')
+			{
+				game->player->x = game->map_x + col * RENDER_PIXELS;
+				game->player->y = game->map_y + row * RENDER_PIXELS;
+			}
+			if (game->map[row][col] == 'X')
+				game->enemies[i++] = new_character(\
+					game->mlx, \
+					game->map_x + col * RENDER_PIXELS, \
+					game->map_y + row * RENDER_PIXELS, \
+					ENEMY_IDLE_RIGHT \
+				);
+			col++;
+		}
+		row++;
+	}
 	return (0);
 }
-
-// static int	init_enemies(t_game *game)
-// {
-// 	game->player = (t_player *)malloc(sizeof(t_player));
-// 	if (game->player == NULL)
-// 		return (perror("Failed to initialize player"), -1);
-// }
 
 int	init_game(t_game *game, char **map)
 {
@@ -79,10 +96,8 @@ int	init_game(t_game *game, char **map)
 	}
 	if (init_assets(game) < 0)
 		return (cleanup(game), -1);
-	if (init_player(game) < 0)
+	if (init_characters(game) < 0)
 		return (cleanup(game), -1);
-	// if (init_enemies(game) < 0)
-	// 	return (cleanup(game), -1);
 	mlx_key_hook(game->mlx, key_hook, game);
 	mlx_loop_hook(game->mlx, loop_hook, game);
 	mlx_close_hook(game->mlx, close_hook, game);
