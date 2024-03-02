@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/01 21:51:40 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/02 17:23:16 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ int	init_game(t_game *game, char **map)
 	mlx_loop_hook(game->mlx, loop_hook, game);
 	mlx_close_hook(game->mlx, close_hook, game);
 	game->collectible_count = count_collectibles(game->map);
+	game->text = NULL;
+	game->move_count_img = NULL;
 	game->move_count = 0;
 	game->state = GAME_RUNNING;
 	return (0);

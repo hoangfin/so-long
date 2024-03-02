@@ -58,6 +58,7 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/set_character_state_bonus.c \
 					$(BONUS_SOURCE_DIR)/start_game_bonus.c \
 					$(BONUS_SOURCE_DIR)/update_collectibles_bonus.c \
+					$(BONUS_SOURCE_DIR)/update_counter_ui_bonus.c \
 					\
 					$(BONUS_SOURCE_DIR)/hooks/loop_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/close_hook_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/02 14:38:26 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/02 17:36:32 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,12 @@ typedef struct s_game
 	mlx_image_t		*space;
 	mlx_image_t		*wall;
 	mlx_image_t		*collectible;
+	mlx_image_t		*exit;
+	mlx_image_t		*text;
+	mlx_image_t		*move_count_img;
 	t_sprite		*player_sprite;
 	t_sprite		*enemy_sprite;
 	t_sprite		*collectible_sprite;
-	mlx_image_t		*exit;
 	t_character		*player;
 	t_character		**enemies;
 	uint32_t		collectible_count;
@@ -142,6 +144,7 @@ void		animate_hor_move(t_character *ch, t_sprite *spr, uint32_t spr_row);
 void		animate_ver_move(t_character *ch, t_sprite *spr, uint32_t spr_row);
 void		set_character_state(t_character *ch, t_character_state state);
 void		update_collectibles(t_game *game, double elapsed_time);
+void		update_counter_ui(t_game *game);
 void		put_pixel(
 				mlx_image_t *img,
 				mlx_image_t *sprite,

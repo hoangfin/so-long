@@ -6,11 +6,11 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 14:59:36 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/22 17:09:54 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/02 17:02:08 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../so_long_bonus.h"
 
 uint32_t	count_collectibles(char **map)
 {
