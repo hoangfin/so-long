@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:20:48 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/01 11:13:04 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/02 14:38:13 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ t_character	*new_character(
 	}
 	character->x = x;
 	character->y = y;
-	character->velocity = (16.67 * RENDER_PIXELS / 350) / 0.01667;
 	character->distance_moved = 0;
-	character->distance_acc = 0;
-	character->elapsed_time_acc = 0;
+	character->elapsed_time = 0;
 	character->current_frame = 0;
+	character->is_state_changed = false;
 	character->state = state;
 	return (character);
 }
