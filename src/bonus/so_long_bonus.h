@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/01 16:24:13 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/02 14:38:26 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,10 @@ typedef struct s_character
 	mlx_image_t			*image;
 	int32_t				x;
 	int32_t				y;
-	double				velocity;
 	int32_t				distance_moved;
-	int32_t				distance_acc;
-	double				elapsed_time_acc;
+	double				elapsed_time;
 	int32_t				current_frame;
+	bool				is_state_changed;
 	t_character_state	state;
 }	t_character;
 
