@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animate_idle_bonus.c                               :+:      :+:    :+:   */
+/*   animate_hor_move_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 21:51:23 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/29 11:53:00 by hoatran          ###   ########.fr       */
+/*   Created: 2024/02/28 15:19:39 by hoatran           #+#    #+#             */
+/*   Updated: 2024/03/02 15:59:02 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../so_long_bonus.h"
 
-void	animate_idle(t_character *ch, t_sprite *spr, uint32_t spr_row)
+void	animate_hor_move(t_character *ch, t_sprite *spr, uint32_t spr_row)
 {
-	if (ch->elapsed_time_acc >= 0.083)
+	if (ch->distance_moved % 4 == 0)
 	{
 		put_pixel(
 			ch->image,
@@ -23,6 +23,6 @@ void	animate_idle(t_character *ch, t_sprite *spr, uint32_t spr_row)
 			spr_row * spr->frame_h \
 		);
 		(ch->current_frame)++;
-		ch->elapsed_time_acc -= 0.083;
+		ch->image->instances[0].x = ch->x;
 	}
 }
