@@ -48,12 +48,9 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/read_map_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/validate_map_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/count_enemies_bonus.c \
+					$(BONUS_SOURCE_DIR)/map/count_collectibles_bonus.c \
 					\
-					$(BONUS_SOURCE_DIR)/animate_hor_move_bonus.c \
-					$(BONUS_SOURCE_DIR)/animate_idle_bonus.c \
-					$(BONUS_SOURCE_DIR)/animate_ver_move_bonus.c \
 					$(BONUS_SOURCE_DIR)/cleanup_bonus.c \
-					$(BONUS_SOURCE_DIR)/count_collectibles_bonus.c \
 					$(BONUS_SOURCE_DIR)/delete_character_bonus.c \
 					$(BONUS_SOURCE_DIR)/init_game_bonus.c \
 					$(BONUS_SOURCE_DIR)/is_movable_bonus.c \
@@ -65,6 +62,10 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/loop_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/close_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/hooks/key_hook_bonus.c \
+					\
+					$(BONUS_SOURCE_DIR)/animation/animate_hor_move_bonus.c \
+					$(BONUS_SOURCE_DIR)/animation/animate_idle_bonus.c \
+					$(BONUS_SOURCE_DIR)/animation/animate_ver_move_bonus.c \
 					\
 					$(BONUS_SOURCE_DIR)/player/transition_player_bonus.c \
 					$(BONUS_SOURCE_DIR)/player/update_player_bonus.c \
@@ -82,8 +83,8 @@ BONUS_OBJECTS := $(BONUS_SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -94,8 +95,8 @@ $(LIBFT):
 bonus: .bonus
 
 .bonus: $(LIBFT) $(BONUS_OBJECTS)
-	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 	touch .bonus
 
 clean:
@@ -109,6 +110,7 @@ clean:
 	rm -f $(BONUS_SOURCE_DIR)/util/*.o
 	rm -f $(BONUS_SOURCE_DIR)/player/*.o
 	rm -f $(BONUS_SOURCE_DIR)/enemy/*.o
+	rm -f $(BONUS_SOURCE_DIR)/animation/*.o
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
