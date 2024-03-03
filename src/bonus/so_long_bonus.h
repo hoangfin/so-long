@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/02 17:36:32 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/03 13:06:11 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 typedef enum s_game_state
 {
 	GAME_RUNNING,
-	GAME_WIN,
-	GAME_LOSE,
+	GAME_WON,
+	GAME_LOST,
 	GAME_EXIT
 }	t_game_state;
 
@@ -133,18 +133,21 @@ void		loop_hook(void *param);
 void		close_hook(void *param);
 bool		is_movable(t_game *game, int32_t x, int32_t y);
 
+void		transition_game(t_game *game, t_game_state new_state);
 void		transition_player(t_game *game, keys_t key);
 void		transition_enemies(t_character **enemies, t_game *game);
+void		update_game(t_game *game, double elapsed_time);
 void		update_player(t_character *player, double elapsed_time);
-void		update_player_ui(t_character *player, t_sprite *player_sprite);
 void		update_enemies(t_character **enemies, double elapsed_time);
+void		update_player_ui(t_character *player, t_sprite *player_sprite);
 void		update_enemies_ui(t_character **enemies, t_sprite *enemy_sprite);
+void		update_counter_ui(t_game *game);
+void		update_collectibles(t_game *game, double elapsed_time);
+void		handle_collision(t_game *game);
 void		animate_idle(t_character *ch, t_sprite *spr, uint32_t spr_row);
 void		animate_hor_move(t_character *ch, t_sprite *spr, uint32_t spr_row);
 void		animate_ver_move(t_character *ch, t_sprite *spr, uint32_t spr_row);
 void		set_character_state(t_character *ch, t_character_state state);
-void		update_collectibles(t_game *game, double elapsed_time);
-void		update_counter_ui(t_game *game);
 void		put_pixel(
 				mlx_image_t *img,
 				mlx_image_t *sprite,
