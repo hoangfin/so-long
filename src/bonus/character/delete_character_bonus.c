@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   delete_character_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:30:12 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/27 12:34:38 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/03 20:24:59 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../so_long_bonus.h"
 
 void	delete_character(mlx_t *mlx, t_character **character)
 {

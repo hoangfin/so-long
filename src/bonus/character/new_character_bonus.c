@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   new_character_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:20:48 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/02 14:38:13 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/03 20:25:09 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../so_long_bonus.h"
 
 t_character	*new_character(
 	mlx_t *mlx,

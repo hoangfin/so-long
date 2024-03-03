@@ -12,7 +12,7 @@ MLX42 := $(MLX42_DIR)/build/libmlx42.a
 CC := cc
 CFLAGS := -g \
 			-fsanitize=address \
-			-D RENDER_PIXELS=64 \
+			-D RENDER_PIXELS=128 \
 			-Wall -Wextra -Werror \
 			-I$(LIBFT_DIR) \
 			-I$(MLX42_DIR)/include
@@ -50,31 +50,33 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/count_enemies_bonus.c \
 					$(BONUS_SOURCE_DIR)/map/count_collectibles_bonus.c \
 					\
-					$(BONUS_SOURCE_DIR)/cleanup_bonus.c \
-					$(BONUS_SOURCE_DIR)/delete_character_bonus.c \
-					$(BONUS_SOURCE_DIR)/init_game_bonus.c \
 					$(BONUS_SOURCE_DIR)/is_movable_bonus.c \
-					$(BONUS_SOURCE_DIR)/new_character_bonus.c \
-					$(BONUS_SOURCE_DIR)/set_character_state_bonus.c \
-					$(BONUS_SOURCE_DIR)/start_game_bonus.c \
+					$(BONUS_SOURCE_DIR)/handle_collision_bonus.c \
 					$(BONUS_SOURCE_DIR)/update_collectibles_bonus.c \
 					$(BONUS_SOURCE_DIR)/update_counter_ui_bonus.c \
 					\
-					$(BONUS_SOURCE_DIR)/hooks/loop_hook_bonus.c \
-					$(BONUS_SOURCE_DIR)/hooks/close_hook_bonus.c \
-					$(BONUS_SOURCE_DIR)/hooks/key_hook_bonus.c \
+					$(BONUS_SOURCE_DIR)/game/cleanup_bonus.c \
+					$(BONUS_SOURCE_DIR)/game/init_game_bonus.c \
+					$(BONUS_SOURCE_DIR)/game/start_game_bonus.c \
+					$(BONUS_SOURCE_DIR)/game/transition_game_bonus.c \
+					$(BONUS_SOURCE_DIR)/game/update_game_bonus.c \
+					$(BONUS_SOURCE_DIR)/game/loop_hook_bonus.c \
+					$(BONUS_SOURCE_DIR)/game/close_hook_bonus.c \
+					$(BONUS_SOURCE_DIR)/game/key_hook_bonus.c \
 					\
 					$(BONUS_SOURCE_DIR)/animation/animate_hor_move_bonus.c \
 					$(BONUS_SOURCE_DIR)/animation/animate_idle_bonus.c \
 					$(BONUS_SOURCE_DIR)/animation/animate_ver_move_bonus.c \
 					\
-					$(BONUS_SOURCE_DIR)/player/transition_player_bonus.c \
-					$(BONUS_SOURCE_DIR)/player/update_player_bonus.c \
-					$(BONUS_SOURCE_DIR)/player/update_player_ui_bonus.c \
-					\
-					$(BONUS_SOURCE_DIR)/enemy/transition_enemies_bonus.c \
-					$(BONUS_SOURCE_DIR)/enemy/update_enemies_bonus.c \
-					$(BONUS_SOURCE_DIR)/enemy/update_enemies_ui_bonus.c
+					$(BONUS_SOURCE_DIR)/character/delete_character_bonus.c \
+					$(BONUS_SOURCE_DIR)/character/new_character_bonus.c \
+					$(BONUS_SOURCE_DIR)/character/set_character_state_bonus.c \
+					$(BONUS_SOURCE_DIR)/character/transition_player_bonus.c \
+					$(BONUS_SOURCE_DIR)/character/update_player_bonus.c \
+					$(BONUS_SOURCE_DIR)/character/update_player_ui_bonus.c \
+					$(BONUS_SOURCE_DIR)/character/transition_enemies_bonus.c \
+					$(BONUS_SOURCE_DIR)/character/update_enemies_bonus.c \
+					$(BONUS_SOURCE_DIR)/character/update_enemies_ui_bonus.c
 
 OBJECTS := $(SOURCES:.c=.o)
 BONUS_OBJECTS := $(BONUS_SOURCES:.c=.o)
@@ -84,8 +86,8 @@ BONUS_OBJECTS := $(BONUS_SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -96,8 +98,8 @@ $(LIBFT):
 bonus: .bonus
 
 .bonus: $(LIBFT) $(BONUS_OBJECTS)
-#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
-	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
+#	$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
 	touch .bonus
 
 clean:
@@ -106,12 +108,11 @@ clean:
 	rm -f $(SOURCE_DIR)/hooks/*.o
 	rm -f $(SOURCE_DIR)/map/*.o
 	rm -f $(BONUS_SOURCE_DIR)/*.o
-	rm -f $(BONUS_SOURCE_DIR)/hooks/*.o
 	rm -f $(BONUS_SOURCE_DIR)/map/*.o
 	rm -f $(BONUS_SOURCE_DIR)/util/*.o
-	rm -f $(BONUS_SOURCE_DIR)/player/*.o
-	rm -f $(BONUS_SOURCE_DIR)/enemy/*.o
+	rm -f $(BONUS_SOURCE_DIR)/character/*.o
 	rm -f $(BONUS_SOURCE_DIR)/animation/*.o
+	rm -f $(BONUS_SOURCE_DIR)/game/*.o
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
