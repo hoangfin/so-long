@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:19:24 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/03 13:22:03 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:20:29 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	cleanup(t_game *game)
 	delete_enemies(game->mlx, game->enemies);
 	mlx_delete_image(game->mlx, game->space);
 	mlx_delete_image(game->mlx, game->wall);
-	// mlx_delete_image(game->mlx, game->player);
 	mlx_delete_image(game->mlx, game->collectible);
 	mlx_delete_image(game->mlx, game->exit);
 	mlx_delete_image(game->mlx, game->text);
+	mlx_delete_image(game->mlx, game->lost_msg_img);
 	mlx_delete_image(game->mlx, game->move_count_img);
 }

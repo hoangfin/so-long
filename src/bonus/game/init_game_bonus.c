@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/03 13:21:27 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/04 01:18:44 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,12 @@ int	init_game(t_game *game, char **map)
 	mlx_close_hook(game->mlx, close_hook, game);
 	game->collectible_count = count_collectibles(game->map);
 	game->text = NULL;
+	game->lost_msg_img = NULL;
 	game->move_count_img = NULL;
 	game->move_count = 0;
+	game->overlay = mlx_new_image(game->mlx, game->mlx->width, game->mlx->height);
+	ft_memset(game->overlay->pixels, 0x374151cc, game->mlx->width * game->mlx->height * sizeof(int32_t));
+	game->overlay->enabled = false;
 	game->state = GAME_RUNNING;
 	return (0);
 }

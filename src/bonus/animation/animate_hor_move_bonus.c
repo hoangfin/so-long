@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animate_hor_move_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:19:39 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/02 15:59:02 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/03 20:45:24 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	animate_hor_move(t_character *ch, t_sprite *spr, uint32_t spr_row)
 {
-	if (ch->distance_moved % 4 == 0)
+	const int32_t	update_rate = RENDER_PIXELS * 0.0625;
+
+	if (ch->distance_moved % update_rate == 0)
 	{
 		put_pixel(
 			ch->image,

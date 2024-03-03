@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_enemies_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:22:59 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/02 15:12:03 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/03 20:41:37 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static void	update_enemy(t_character *enemy, double elapsed_time)
 		return (set_character_state(enemy, ENEMY_IDLE_RIGHT));
 	}
 	if (enemy->state == ENEMY_MOVE_UP)
-		enemy->y -= 2;
+		enemy->y -= RENDER_PIXELS * 0.03125;
 	else if (enemy->state == ENEMY_MOVE_RIGHT)
-		enemy->x += 2;
+		enemy->x += RENDER_PIXELS * 0.03125;
 	else if (enemy->state == ENEMY_MOVE_DOWN)
-		enemy->y += 2;
+		enemy->y += RENDER_PIXELS * 0.03125;
 	else if (enemy->state == ENEMY_MOVE_LEFT)
-		enemy->x -= 2;
-	enemy->distance_moved += 2;
+		enemy->x -= RENDER_PIXELS * 0.03125;
+	enemy->distance_moved += RENDER_PIXELS * 0.03125;
 	enemy->elapsed_time += elapsed_time;
 }
 

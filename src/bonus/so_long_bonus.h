@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/03 13:06:11 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/04 01:11:39 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ typedef enum s_game_state
 {
 	GAME_RUNNING,
 	GAME_WON,
-	GAME_LOST,
-	GAME_EXIT
+	GAME_LOST
 }	t_game_state;
 
 typedef enum e_character_state
@@ -87,7 +86,9 @@ typedef struct s_game
 	mlx_image_t		*collectible;
 	mlx_image_t		*exit;
 	mlx_image_t		*text;
+	mlx_image_t		*lost_msg_img;
 	mlx_image_t		*move_count_img;
+	mlx_image_t		*overlay;
 	t_sprite		*player_sprite;
 	t_sprite		*enemy_sprite;
 	t_sprite		*collectible_sprite;
@@ -133,10 +134,8 @@ void		loop_hook(void *param);
 void		close_hook(void *param);
 bool		is_movable(t_game *game, int32_t x, int32_t y);
 
-void		transition_game(t_game *game, t_game_state new_state);
 void		transition_player(t_game *game, keys_t key);
 void		transition_enemies(t_character **enemies, t_game *game);
-void		update_game(t_game *game, double elapsed_time);
 void		update_player(t_character *player, double elapsed_time);
 void		update_enemies(t_character **enemies, double elapsed_time);
 void		update_player_ui(t_character *player, t_sprite *player_sprite);

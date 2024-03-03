@@ -12,7 +12,7 @@ MLX42 := $(MLX42_DIR)/build/libmlx42.a
 CC := cc
 CFLAGS := -g \
 			-fsanitize=address \
-			-D RENDER_PIXELS=128 \
+			-D RENDER_PIXELS=64 \
 			-Wall -Wextra -Werror \
 			-I$(LIBFT_DIR) \
 			-I$(MLX42_DIR)/include
@@ -58,8 +58,6 @@ BONUS_SOURCES := $(BONUS_SOURCE_DIR)/main_bonus.c \
 					$(BONUS_SOURCE_DIR)/game/cleanup_bonus.c \
 					$(BONUS_SOURCE_DIR)/game/init_game_bonus.c \
 					$(BONUS_SOURCE_DIR)/game/start_game_bonus.c \
-					$(BONUS_SOURCE_DIR)/game/transition_game_bonus.c \
-					$(BONUS_SOURCE_DIR)/game/update_game_bonus.c \
 					$(BONUS_SOURCE_DIR)/game/loop_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/game/close_hook_bonus.c \
 					$(BONUS_SOURCE_DIR)/game/key_hook_bonus.c \

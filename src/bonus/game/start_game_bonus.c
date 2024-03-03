@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:51:02 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/03 13:22:33 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/04 01:14:30 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ static int	draw(t_game *game)
 	) == -1)
 		return (-1);
 	draw_enemies(game->mlx, game->enemies);
+	mlx_image_to_window(game->mlx, game->overlay, 0, 0);
 	return (0);
 }
 

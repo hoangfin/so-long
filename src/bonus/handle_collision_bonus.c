@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 19:00:26 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/03 13:11:43 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/04 00:51:07 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	handle_enemies(t_game *game)
 	{
 		if (has_collision(game->player, *enemies))
 		{
-			transition_game(game, GAME_LOST);
+			game->state = GAME_LOST;
 			return ;
 		}
 		enemies++;
@@ -85,7 +85,7 @@ static void	handle_escape(t_game *game)
 		&& game->exit->instances[0].y == game->player->y
 		&& game->exit->enabled == true
 	)
-		transition_game(game, GAME_WON);
+		game->state = GAME_WON;
 
 }
 
