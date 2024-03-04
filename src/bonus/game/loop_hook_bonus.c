@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:24:50 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/04 23:10:04 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/05 00:39:03 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void	loop_hook(void *param)
 	const double	elapsed_time = game->mlx->delta_time;
 
 	if (game->state == GAME_RUNNING)
-		return (handle_game_running(game, elapsed_time));
-	if (game->state == GAME_LOST)
-		return (handle_game_lost(game));
-	if (game->state == GAME_WON)
-		return (handle_game_won(game));
-	if (game->state == GAME_EXIT)
+		handle_game_running(game, elapsed_time);
+	else if (game->state == GAME_LOST)
+		handle_game_lost(game);
+	else if (game->state == GAME_WON)
+		handle_game_won(game);
+	else if (game->state == GAME_EXIT)
 	{
 		cleanup(game);
 		mlx_close_window(game->mlx);

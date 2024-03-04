@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 19:52:19 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/04 23:14:48 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/05 00:39:30 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	close_hook(void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	mlx_close_window(game->mlx);
 	cleanup(game);
+	mlx_close_window(game->mlx);
 }

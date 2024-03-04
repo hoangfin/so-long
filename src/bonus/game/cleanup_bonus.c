@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:19:24 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/04 22:59:34 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/05 00:50:06 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	cleanup(t_game *game)
 	mlx_delete_image(game->mlx, game->exit);
 	mlx_delete_image(game->mlx, game->text);
 	mlx_delete_image(game->mlx, game->lose_img);
+	mlx_delete_image(game->mlx, game->win_img);
 	mlx_delete_image(game->mlx, game->move_count_img);
 }

@@ -11,11 +11,11 @@ MLX42 := $(MLX42_DIR)/build/libmlx42.a
 
 CC := cc
 CFLAGS := -g \
-			-fsanitize=address \
 			-D RENDER_PIXELS=64 \
 			-Wall -Wextra -Werror \
 			-I$(LIBFT_DIR) \
 			-I$(MLX42_DIR)/include
+#			-fsanitize=address \
 
 SOURCES := $(SOURCE_DIR)/main.c \
 			$(SOURCE_DIR)/map/has_valid_chars.c \
