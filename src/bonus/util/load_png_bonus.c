@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load_png_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:19:09 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/24 20:06:26 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/04 16:42:15 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-mlx_image_t	*load_png(mlx_t *mlx, const char *path)
+mlx_image_t	*load_png(mlx_t *mlx, const char *path, bool resize)
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
@@ -22,7 +22,7 @@ mlx_image_t	*load_png(mlx_t *mlx, const char *path)
 		return (NULL);
 	image = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
-	if (image->width != RENDER_PIXELS)
+	if (resize == true && image->width != RENDER_PIXELS)
 	{
 		if (!mlx_resize_image(\
 			image, \

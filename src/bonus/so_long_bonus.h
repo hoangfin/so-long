@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/04 01:11:39 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/04 17:31:52 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ typedef struct s_game
 	mlx_image_t		*collectible;
 	mlx_image_t		*exit;
 	mlx_image_t		*text;
-	mlx_image_t		*lost_msg_img;
+	mlx_image_t		*lose_img;
+	mlx_image_t		*win_img;
 	mlx_image_t		*move_count_img;
-	mlx_image_t		*overlay;
 	t_sprite		*player_sprite;
 	t_sprite		*enemy_sprite;
 	t_sprite		*collectible_sprite;
@@ -99,7 +99,7 @@ typedef struct s_game
 	t_game_state	state;
 }	t_game;
 
-mlx_image_t	*load_png(mlx_t *mlx, const char *path);
+mlx_image_t	*load_png(mlx_t *mlx, const char *path, bool resize);
 t_sprite	*load_sprite(
 				mlx_t *mlx,
 				const char *pathname,
@@ -126,6 +126,7 @@ t_character	*new_character(
 				t_character_state state \
 			);
 void		delete_character(mlx_t *mlx, t_character **character);
+int			init_characters(t_game *game);
 int			init_game(t_game *game, char **map);
 void		start_game(t_game *game);
 void		cleanup(t_game *game);

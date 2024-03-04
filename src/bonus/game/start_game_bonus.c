@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:51:02 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/04 01:14:30 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/04 17:37:49 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,6 @@ static int	draw(t_game *game)
 	int32_t	row;
 	int32_t	col;
 
-	game->text = mlx_put_string(game->mlx, "Movement count:", PADDING, PADDING);
-	game->move_count_img = mlx_put_string(\
-		game->mlx, "0", PADDING + game->text->width + 5, PADDING \
-	);
 	draw_floor(game);
 	row = 0;
 	while (row < game->row_count)
@@ -88,7 +84,7 @@ static int	draw(t_game *game)
 	) == -1)
 		return (-1);
 	draw_enemies(game->mlx, game->enemies);
-	mlx_image_to_window(game->mlx, game->overlay, 0, 0);
+	
 	return (0);
 }
 
