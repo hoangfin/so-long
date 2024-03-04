@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:24:50 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/04 17:49:43 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/04 23:10:04 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static void	handle_game_won(t_game *game)
 		mlx_image_to_window(
 			game->mlx,
 			game->win_img,
-			0,
-			game->mlx->height / 2 - game->lose_img->height / 2 \
+			game->mlx->width / 2 - game->win_img->width / 2,
+			game->mlx->height / 2 - game->win_img->height / 2 \
 		);
 }
 
@@ -57,4 +57,9 @@ void	loop_hook(void *param)
 		return (handle_game_lost(game));
 	if (game->state == GAME_WON)
 		return (handle_game_won(game));
+	if (game->state == GAME_EXIT)
+	{
+		cleanup(game);
+		mlx_close_window(game->mlx);
+	}
 }

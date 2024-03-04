@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/04 17:32:14 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/04 22:36:05 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ static int	configure_assets(t_game *game)
 		game->mlx->width * game->lose_img->height / game->lose_img->width \
 	))
 		return (ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2), -1);
-	printf("width = %u, height = %u\n", game->lose_img->width, game->lose_img->height);
-	game->lose_img->enabled = false;
 	game->exit->enabled = false;
 	return (0);
 }

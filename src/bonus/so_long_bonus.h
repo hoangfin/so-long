@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:46:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/04 17:31:52 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/04 23:09:04 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef enum s_game_state
 {
 	GAME_RUNNING,
 	GAME_WON,
-	GAME_LOST
+	GAME_LOST,
+	GAME_EXIT
 }	t_game_state;
 
 typedef enum e_character_state
