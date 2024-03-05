@@ -6,6 +6,7 @@ ARRAY_DIR := ./array
 LIST_DIR := ./linkedlist
 STRING_DIR := ./string
 GNL_DIR := ./gnl
+PRINTF_DIR := ./printf
 
 # Compiler & flags
 CC := cc
@@ -79,7 +80,20 @@ SOURCES := $(COMMON_DIR)/ft_atoi.c \
 		$(LIST_DIR)/ft_list_some.c \
 		$(LIST_DIR)/ft_list_map.c \
 		$(LIST_DIR)/ft_list_clear.c \
-		$(GNL_DIR)/get_next_line.c
+		$(GNL_DIR)/get_next_line.c \
+		$(PRINTF_DIR)/ft_printf.c \
+		$(PRINTF_DIR)/ft_printf.h \
+		$(PRINTF_DIR)/get_printf_flag.c \
+		$(PRINTF_DIR)/is_conversion.c \
+		$(PRINTF_DIR)/is_flag.c \
+		$(PRINTF_DIR)/parse.c \
+		$(PRINTF_DIR)/print_c.c \
+		$(PRINTF_DIR)/print_d.c \
+		$(PRINTF_DIR)/print_p.c \
+		$(PRINTF_DIR)/print_percent.c \
+		$(PRINTF_DIR)/print_s.c \
+		$(PRINTF_DIR)/print_u.c \
+		$(PRINTF_DIR)/print_x.c
 
 # Object files
 OBJECTS := $(SOURCES:.c=.o)
@@ -101,7 +115,8 @@ clean:
 	rm -f $(COMMON_DIR)/*.o \
 			$(ARRAY_DIR)/*.o \
 			$(LIST_DIR)/*.o \
-			$(STRING_DIR)/*.o
+			$(STRING_DIR)/*.o \
+			$(PRINTF_DIR)/*.o
 
 fclean: clean
 	rm -f $(NAME)

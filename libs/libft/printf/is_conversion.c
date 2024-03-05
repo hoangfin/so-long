@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   is_conversion.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 15:56:46 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/05 17:08:11 by hoatran          ###   ########.fr       */
+/*   Created: 2023/11/26 22:14:12 by hoatran           #+#    #+#             */
+/*   Updated: 2024/03/05 17:03:02 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft_printf_internal.h"
 
-# include "common/libft_common.h"
-# include "array/libft_array.h"
-# include "string/libft_string.h"
-# include "linkedlist/libft_list.h"
-# include "gnl/get_next_line.h"
-# include "printf/ft_printf.h"
+int	is_conversion(char c)
+{
+	const char	*conversion = SUP_CONVERSIONS;
 
-#endif
+	while (*conversion != '\0')
+	{
+		if (*conversion == c)
+			return (1);
+		conversion++;
+	}
+	return (0);
+}

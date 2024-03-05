@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 15:56:46 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/05 17:08:11 by hoatran          ###   ########.fr       */
+/*   Created: 2023/11/20 14:30:10 by hoatran           #+#    #+#             */
+/*   Updated: 2024/03/05 16:59:21 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include "common/libft_common.h"
-# include "array/libft_array.h"
-# include "string/libft_string.h"
-# include "linkedlist/libft_list.h"
-# include "gnl/get_next_line.h"
-# include "printf/ft_printf.h"
+int	ft_printf(const char *format, ...);
 
 #endif
