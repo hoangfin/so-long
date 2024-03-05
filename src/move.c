@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:45:00 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 23:34:24 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/05 17:15:17 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	move(t_game *game, int32_t dx, int32_t dy)
 	game->player->instances[0].x += dx;
 	game->player->instances[0].y += dy;
 	game->move_count++;
-	printf("Number of movements: %u\n", game->move_count);
+	ft_printf("Number of movements: %u\n", game->move_count);
 	collect(game, x, y);
 	escape(game, x, y);
 }
