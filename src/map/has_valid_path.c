@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   has_valid_path.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:06:33 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/25 11:26:45 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:28:24 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ bool	has_valid_path(char **map, size_t row_count, size_t col_count)
 		return (perror("Error\n"), false);
 	get_player_position(map, &start_row, &start_col);
 	dfs(map, start_row, start_col, visited);
-
 	if (
 		count_collectibles(map) != count_collectibles(visited)
 		|| count_exit(visited) != 1

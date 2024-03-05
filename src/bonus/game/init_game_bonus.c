@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:30:56 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/04 22:36:05 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/05 14:02:44 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ int	init_game(t_game *game, char **map)
 	if (init_assets(game) < 0)
 		return (cleanup(game), -1);
 	if (init_characters(game) < 0)
-		return (cleanup(game), -1);
-	if (init_assets(game) < 0)
 		return (cleanup(game), -1);
 	if (configure_assets(game) < 0)
 		return (cleanup(game), -1);

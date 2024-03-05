@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/22 17:09:11 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:25:14 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ static int	init_map(char **map, const char *pathname)
 	fd = open(pathname, O_RDONLY);
 	if (fd < 0)
 		return (perror("Error\n"), -1);
-	if (errno == 2)
-		errno = 0;
 	i = 0;
 	while (get_next_line(fd, &line) > -1 && line != NULL)
 	{

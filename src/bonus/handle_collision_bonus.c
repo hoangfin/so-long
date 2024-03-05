@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_collision_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 19:00:26 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/04 00:51:07 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:01:49 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,14 @@ static void	handle_collectibles(t_game *game)
 static bool	has_collision(t_character *player, t_character *enemy)
 {
 	const int32_t	padding = RENDER_PIXELS * 0.3;
-	const int32_t	player_rect[4][2] = {
-		{player->x + padding, player->y + padding},
-		{player->x + RENDER_PIXELS - padding, player->y + padding},
-		{player->x + padding, player->y + RENDER_PIXELS - padding},
-		{player->x + RENDER_PIXELS - padding, player->y + RENDER_PIXELS - padding}
+	const int32_t	player_rect[4][2] = {\
+		{player->x + padding, player->y + padding}, \
+		{player->x + RENDER_PIXELS - padding, player->y + padding}, \
+		{player->x + padding, player->y + RENDER_PIXELS - padding}, \
+		{\
+			player->x + RENDER_PIXELS - padding, \
+			player->y + RENDER_PIXELS - padding \
+		}
 	};
 	int32_t			i;
 
@@ -58,7 +61,7 @@ static bool	has_collision(t_character *player, t_character *enemy)
 			return (true);
 		i++;
 	}
-		return (false);
+	return (false);
 }
 
 static void	handle_enemies(t_game *game)
@@ -75,7 +78,6 @@ static void	handle_enemies(t_game *game)
 		}
 		enemies++;
 	}
-
 }
 
 static void	handle_escape(t_game *game)
@@ -86,7 +88,6 @@ static void	handle_escape(t_game *game)
 		&& game->exit->enabled == true
 	)
 		game->state = GAME_WON;
-
 }
 
 void	handle_collision(t_game *game)
