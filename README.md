@@ -9,3 +9,6 @@ You'll lose if coming into collision with enemies, although attacking animation 
 it can slay a foe. Don't flatter yourself :zany_face:
 
 ## Installation
+
+## Credits
+Image resources: [Pixel Frog - Tiny Swords](https://pixelfrog-assets.itch.io/tiny-swords)
