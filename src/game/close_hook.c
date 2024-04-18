@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   has_valid_pec.c                                    :+:      :+:    :+:   */
+/*   close_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 16:10:51 by hoatran           #+#    #+#             */
+/*   Created: 2024/02/03 19:52:19 by hoatran           #+#    #+#             */
 /*   Updated: 2024/04/18 19:17:03 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-bool	has_valid_pec(char **map, int p, int e, int c)
+/**
+ * Callback function used to handle window closing which is called when the
+ * user attempts to close the window, for example by clicking the close widget
+ * in the title bar.
+ *
+ * @param[in] param Additional parameter to pass to the function.
+ */
+void	close_hook(void *param)
 {
-	int	row;
-	int	col;
+	t_game	*game;
 
-	row = 0;
-	while (map[row] != NULL)
-	{
-		col = 0;
-		while (map[row][col] != '\0')
-		{
-			if (map[row][col] == 'P')
-				p++;
-			if (map[row][col] == 'C')
-				c++;
-			if (map[row][col++] == 'E')
-				e++;
-		}
-		row++;
-	}
-	if (p < 1 || e < 1)
-		return (ft_putendl_fd("Error\nPlayer or exit not found", 2), false);
-	if (p >= 2 || e >= 2)
-		return (ft_putendl_fd("Error\nDuplicate chars (exit/start)", 2), false);
-	if (c < 1)
-		return (ft_putendl_fd("Error\nNo collectible found", 2), false);
-	return (true);
+	game = (t_game *)param;
+	cleanup(game);
+	mlx_close_window(game->mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   has_valid_path.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:06:33 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/05 16:28:24 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/04/18 19:17:03 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,11 @@ bool	has_valid_path(char **map, size_t row_count, size_t col_count)
 		count_collectibles(map) != count_collectibles(visited)
 		|| count_exit(visited) != 1
 	)
-		return (ft_putendl_fd("Error\nMap has invalid path", 2), false);
-	ft_matrix_print(visited);
+	{
+		ft_matrix_delete(&visited);
+		ft_putendl_fd("Error\nMap has invalid path", 2);
+		return (false);
+	}
 	ft_matrix_delete(&visited);
 	return (true);
 }

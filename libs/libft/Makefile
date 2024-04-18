@@ -10,7 +10,7 @@ PRINTF_DIR := ./printf
 
 # Compiler & flags
 CC := cc
-CFLAGS := -g -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror
 
 # Source files
 SOURCES := $(COMMON_DIR)/ft_atoi.c \
@@ -59,6 +59,7 @@ SOURCES := $(COMMON_DIR)/ft_atoi.c \
 		$(COMMON_DIR)/ft_toupper_str.c \
 		$(STRING_DIR)/ft_string.c \
 		$(STRING_DIR)/ft_ends_with.c \
+		$(STRING_DIR)/ft_starts_with.c \
 		$(STRING_DIR)/ft_strdup_chr.c \
 		$(STRING_DIR)/ft_matrix.c \
 		$(STRING_DIR)/ft_matrix_delete.c \
@@ -116,6 +117,7 @@ clean:
 			$(ARRAY_DIR)/*.o \
 			$(LIST_DIR)/*.o \
 			$(STRING_DIR)/*.o \
+			$(GNL_DIR)/*.o \
 			$(PRINTF_DIR)/*.o
 
 fclean: clean

@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 14:12:40 by hoatran           #+#    #+#             */
-/*   Updated: 2024/01/19 00:37:57 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/14 12:02:54 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,6 @@ static void	reverse(char *buffer)
 	}
 }
 
-/**
- * The ft_utoa() returns a string representing the unsigned integer received
- * as an argument.
- *
- * @param	{unsigned_int}	n		The unsigned integer to convert.
- * @param	{char*}			buffer	The buffer used to hold the string output.
- * 									The recommended size for buffer is:
- * 									sizeof(unsigned int) * 8 + 1
- * @param	{int}			radix	The radix values can be OCTAL, DECIMAL, or HEX
- *
- * @returns	{char*}			A char pointer (same as buffer) will be returned.
- * 							When an invalid radix argument is passed, function will
- * 							will return NULL. The string representing the integer.
- * 							NULL is returned if the allocation fails.
-*/
 char	*ft_utoa(unsigned int n, char *buffer, int radix)
 {
 	if (radix != 8 && radix != 10 && radix != 16)

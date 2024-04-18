@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   has_valid_pec.c                                    :+:      :+:    :+:   */
+/*   animate_idle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 16:10:51 by hoatran           #+#    #+#             */
+/*   Created: 2024/02/28 21:51:23 by hoatran           #+#    #+#             */
 /*   Updated: 2024/04/18 19:17:03 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-bool	has_valid_pec(char **map, int p, int e, int c)
+void	animate_idle(t_character *ch, t_sprite *spr, uint32_t spr_row)
 {
-	int	row;
-	int	col;
-
-	row = 0;
-	while (map[row] != NULL)
+	if (ch->elapsed_time >= 0.083)
 	{
-		col = 0;
-		while (map[row][col] != '\0')
-		{
-			if (map[row][col] == 'P')
-				p++;
-			if (map[row][col] == 'C')
-				c++;
-			if (map[row][col++] == 'E')
-				e++;
-		}
-		row++;
+		put_pixel(
+			ch->image,
+			spr->image,
+			ch->current_frame % spr->col_count * spr->frame_w,
+			spr_row * spr->frame_h \
+		);
+		(ch->current_frame)++;
+		ch->elapsed_time -= 0.083;
 	}
-	if (p < 1 || e < 1)
-		return (ft_putendl_fd("Error\nPlayer or exit not found", 2), false);
-	if (p >= 2 || e >= 2)
-		return (ft_putendl_fd("Error\nDuplicate chars (exit/start)", 2), false);
-	if (c < 1)
-		return (ft_putendl_fd("Error\nNo collectible found", 2), false);
-	return (true);
 }

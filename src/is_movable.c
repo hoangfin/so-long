@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   has_valid_pec.c                                    :+:      :+:    :+:   */
+/*   is_movable.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 16:10:51 by hoatran           #+#    #+#             */
+/*   Created: 2024/02/27 16:51:15 by hoatran           #+#    #+#             */
 /*   Updated: 2024/04/18 19:17:03 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
-bool	has_valid_pec(char **map, int p, int e, int c)
+bool	is_movable(t_game *game, int32_t x, int32_t y)
 {
-	int	row;
-	int	col;
+	mlx_instance_t *const	walls = game->wall->instances;
+	uint32_t				i;
 
-	row = 0;
-	while (map[row] != NULL)
+	if (
+		x < game->map_x
+		|| x >= game->map_w
+		|| y < game->map_y
+		|| y >= game->map_h
+	)
+		return (false);
+	i = 0;
+	while (i < game->wall->count)
 	{
-		col = 0;
-		while (map[row][col] != '\0')
-		{
-			if (map[row][col] == 'P')
-				p++;
-			if (map[row][col] == 'C')
-				c++;
-			if (map[row][col++] == 'E')
-				e++;
-		}
-		row++;
+		if (walls[i].x == x && walls[i].y == y)
+			return (false);
+		i++;
 	}
-	if (p < 1 || e < 1)
-		return (ft_putendl_fd("Error\nPlayer or exit not found", 2), false);
-	if (p >= 2 || e >= 2)
-		return (ft_putendl_fd("Error\nDuplicate chars (exit/start)", 2), false);
-	if (c < 1)
-		return (ft_putendl_fd("Error\nNo collectible found", 2), false);
 	return (true);
 }

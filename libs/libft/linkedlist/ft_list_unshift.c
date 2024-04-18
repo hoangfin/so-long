@@ -6,12 +6,11 @@
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 22:29:05 by hoatran           #+#    #+#             */
-/*   Updated: 2024/01/19 00:39:31 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/14 12:03:10 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_list.h"
-
 
 static size_t	ft_circular_list_unshift(t_list *list, t_node *node)
 {

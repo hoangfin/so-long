@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:07:16 by hoatran           #+#    #+#             */
-/*   Updated: 2024/03/05 16:28:43 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/04/18 19:17:03 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ static int	count_rows(const char *pathname)
 	while (get_next_line(fd, &line) > -1 && line != NULL)
 	{
 		row_count++;
+		if (ft_strlen(line) * RENDER_PIXELS > 2560)
+		{
+			free(line);
+			close(fd);
+			return (ft_putendl_fd("Error\nMap is too large", 2), -1);
+		}
 		free(line);
 	}
 	close(fd);
@@ -70,17 +76,15 @@ char	**read_map(const char *pathname)
 
 	row_count = count_rows(pathname);
 	if (row_count < 0)
-		exit(EXIT_FAILURE);
+		return (NULL);
+	if (row_count == 0)
+		return (ft_putendl_fd("Error\nMap is empty", 2), NULL);
+	if (row_count * RENDER_PIXELS > 1720)
+		return (ft_putendl_fd("Error\nMap is too large", 2), NULL);
 	map = (char **)ft_calloc(row_count + 1, sizeof(char *));
 	if (map == NULL)
-	{
-		perror("Map allocation failed");
-		exit(EXIT_FAILURE);
-	}
+		return (perror("Map allocation failed"), NULL);
 	if (init_map(map, pathname) < 0)
-	{
-		free(map);
-		exit(EXIT_FAILURE);
-	}
+		return (free(map), NULL);
 	return (map);
 }

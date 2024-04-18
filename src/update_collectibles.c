@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   has_valid_chars.c                                  :+:      :+:    :+:   */
+/*   update_collectibles.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 15:58:22 by hoatran           #+#    #+#             */
+/*   Created: 2024/02/23 11:45:09 by hoatran           #+#    #+#             */
 /*   Updated: 2024/04/18 19:17:03 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
-bool	has_valid_chars(char **map)
+void	update_collectibles(t_game *game, double elapsed_time)
 {
-	size_t	row;
-	size_t	col;
+	static double	accumulator = 0;
+	static int32_t	current_frame = 0;
+	int32_t			frame_index;
 
-	row = 0;
-	while (map[row] != NULL)
+	accumulator += elapsed_time;
+	frame_index = current_frame % game->collectible_sprite->col_count;
+	if (accumulator > 0.1)
 	{
-		col = 0;
-		while (map[row][col] != '\0')
-		{
-			if (
-				map[row][col] != '0' && map[row][col] != '1'
-				&& map[row][col] != 'C' && map[row][col] != 'E'
-				&& map[row][col] != 'P' && map[row][col] != 'X'
-			)
-			{
-				ft_putendl_fd("Error\nMap contains invalid characters", 2);
-				return (false);
-			}
-			col++;
-		}
-		row++;
+		put_pixel(
+			game->collectible,
+			game->collectible_sprite->image,
+			frame_index * game->collectible_sprite->frame_w,
+			0 \
+		);
+		current_frame++;
+		accumulator -= 0.1;
 	}
-	return (true);
 }

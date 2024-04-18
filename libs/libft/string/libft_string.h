@@ -6,7 +6,7 @@
 /*   By: hoatran <hoatran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:37:34 by hoatran           #+#    #+#             */
-/*   Updated: 2024/02/21 12:20:14 by hoatran          ###   ########.fr       */
+/*   Updated: 2024/03/09 18:22:25 by hoatran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_grid
 
 t_string	*ft_string(char *str);
 t_bool		ft_ends_with(const char *string, const char *search_string);
+t_bool		ft_starts_with(const char *string, const char *search_string);
 char		*ft_strdup_chr(char *source, char delimiter);
 char		**ft_matrix(size_t row_count, size_t col_count, int c);
 size_t		ft_matrix_count_rows(char **matrix);
