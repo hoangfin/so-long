@@ -11,5 +11,5 @@ it can slay a foe. Don't flatter yourself :zany_face:
 ## Installation
 
 ## Credits
-[MLX42](https://github.com/codam-coding-college/MLX42) - Graphics library running on GLFW and OpenGL
-[Pixel Frog - Tiny Swords](https://pixelfrog-assets.itch.io/tiny-swords) - Game assets
+[MLX42](https://github.com/codam-coding-college/MLX42) - Graphics library running on GLFW and OpenGL.<br />
+[Pixel Frog - Tiny Swords](https://pixelfrog-assets.itch.io/tiny-swords) - Game assets.
