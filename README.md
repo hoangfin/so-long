@@ -1,4 +1,4 @@
-# so-long A simple 2D game
+# so-long
 
 ## Gameplay
 
@@ -11,4 +11,5 @@ it can slay a foe. Don't flatter yourself :zany_face:
 ## Installation
 
 ## Credits
-Image resources: [Pixel Frog - Tiny Swords](https://pixelfrog-assets.itch.io/tiny-swords)
+[MLX42](https://github.com/codam-coding-college/MLX42) - Graphics library running on GLFW and OpenGL
+[Pixel Frog - Tiny Swords](https://pixelfrog-assets.itch.io/tiny-swords) - Game assets
