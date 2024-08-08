@@ -65,7 +65,7 @@ OBJECTS := $(SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX42) $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -L"/Users/$(USER)/.brew/Cellar/glfw/3.3.9/lib" -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -ldl -lglfw -pthread -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
