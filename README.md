@@ -34,7 +34,7 @@ sudo pacman -S glfw-wayland
 
 ### 2. Download and build:
 ```
-git clone https://github.com/hoangfin/so-long.git
+git clone --recurse-submodules https://github.com/hoangfin/so-long.git
 cd so-long
 make
 ```
@@ -42,7 +42,7 @@ make
 ### 3. Run the game:
 All maps are stored @ `assets/maps` [directory](https://github.com/hoangfin/so-long/tree/main/assets/maps)
 ```
-./so-long assets/maps/map-1.ber
+./so_long assets/maps/map-1.ber
 ```
 ## Credits
 [MLX42](https://github.com/codam-coding-college/MLX42) - Graphics library running on GLFW and OpenGL.<br />
